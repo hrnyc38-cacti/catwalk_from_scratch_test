@@ -1,12 +1,22 @@
-const webpack = require('webpack');
-const path = require('path');
+var path = require("path");
+var SRC_DIR = path.join(__dirname, "/client/src");
+var DIST_DIR = path.join(__dirname, "/client/dist");
 
-const config = {
-  entry: './src/index.js',
+module.exports = {
+  entry: `${SRC_DIR}/index.jsx`,
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  }
+    filename: "bundle.js",
+    path: DIST_DIR,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
 };
-
-module.exports = config;
