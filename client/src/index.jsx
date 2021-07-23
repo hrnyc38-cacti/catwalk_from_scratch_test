@@ -33,7 +33,7 @@ class App extends React.Component {
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/?page=${page}`,
       headers: {
         //'User-Agent': 'request',
-        'Authorization': "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"
+        'Authorization': `${TOKEN}`
       }
     };
     console.log('this is token ', TOKEN);
