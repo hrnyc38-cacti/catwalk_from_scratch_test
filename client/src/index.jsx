@@ -12,6 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentProduct: null,
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],
       questions: [],
@@ -21,22 +22,26 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getProductsByPage(1, (err, data) => {
+    console.log('this is token ', TOKEN);
+    this.getProductById(11001, (err, data) => {
       if (err) {console.log(err);}
       console.log(data);
+      this.setState({
+        currentProduct: data
+      })
     })
   }
 
-  getProductsByPage(page, callback) {
+  getProductById(id, callback) {
     let options = {
       type: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/?page=${page}`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}`,
       headers: {
         //'User-Agent': 'request',
         'Authorization': `${TOKEN}`
       }
     };
-    console.log('this is token ', TOKEN);
+
     axios(options)
       .then((res) => {
         callback(null, res.data);
@@ -57,7 +62,7 @@ class App extends React.Component {
           <RelatedProducts/>
         </div>
         <div>
-          <Questions />
+          <Questions productId={this.state.currentProduct.id}/>
         </div>
         <div>
           <Review/>

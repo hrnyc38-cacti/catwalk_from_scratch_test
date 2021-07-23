@@ -1,5 +1,5 @@
 import React from "react";
 
-var TOKEN = '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';
+var TOKEN = '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';
 
 export { TOKEN };
