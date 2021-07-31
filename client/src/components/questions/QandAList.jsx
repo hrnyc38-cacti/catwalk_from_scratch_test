@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QnA from './QnA.jsx';
+import QModal from './QModal.jsx';
 
 const qsPerPage = 4;
 let array4holdingQs = [];
@@ -23,6 +24,8 @@ function QandAList ({questions}) {
       setNext(next + qsPerPage);
     };
 
+    const [show, setShow] = useState(false);
+
     return (
       <div>
         <ol>
@@ -31,7 +34,10 @@ function QandAList ({questions}) {
           })}
         </ol>
         <button onClick={handleShowMoreQs}>MORE ANSWERED QUESTIONS</button>
-        <button>ADD A QUESTION +</button>
+        <div>
+          <button onClick={() => setShow(true)} >ADD A QUESTION +</button>
+          <QModal show={show} onClose={()=> setShow(false)}/>
+        </div>
       </div>
     )
   } else if (questions.length === 0) {
@@ -44,7 +50,10 @@ function QandAList ({questions}) {
             return <QnA key={i} question={question}/>
           })}
         </ol>
-        <button>ADD A QUESTION +</button>
+        <div>
+          <button>ADD A QUESTION +</button>
+          <QModal />
+        </div>
       </div>
     )
   }

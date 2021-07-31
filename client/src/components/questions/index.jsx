@@ -19,12 +19,13 @@ class Questions extends React.Component {
       .then((results) => {
         //console.log(results);
         this.setState({questions: results.data})
-        console.log('THIS IS STATE.result ', this.state.questions.results)
+        console.log('THIS IS STATE', this.state.questions)
       })
       .catch((err) => {
         console.log(err);
       })
   }
+
 
   render() {
     console.log('THIS IS STATE.result ', this.state.questions.results);
