@@ -49,7 +49,7 @@ class QnA extends React.Component {
           <span>Helpful? <button onClick={this.handleHelpful.bind(this)}>Yes {`(${this.state.counter})`}</button></span>
           <span>
              | <button onClick={this.handleShowModal.bind(this)}>Add Answer</button>
-               <AnsModal show={this.state.showModal} onClose={this.handleHideModal.bind(this)}/>
+               <AnsModal show={this.state.showModal} onClose={this.handleHideModal.bind(this)} qId={this.props.question.question_id}/>
           </span>
         </div>
         <div>A: <Answers answers={this.props.question.answers}/></div>

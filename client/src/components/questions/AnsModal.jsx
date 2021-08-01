@@ -19,7 +19,7 @@ function AnsModal (props) {
           <h5 className="modal-subtitle">ProductName: QuestionBody</h5>
         </div>
         <div className="modal-body"> here is a form
-          <AnsForm onSubmitAns={handleSubmitAns}/>
+          <AnsForm onSubmitAns={handleSubmitAns} qID={props.qId}/>
 
         <div className="modal-footer">
           <button className="button" onClick={props.onClose}>Close</button>

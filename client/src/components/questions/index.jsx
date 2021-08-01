@@ -37,7 +37,7 @@ class Questions extends React.Component {
     } else {
       return (
         <div>
-          <h6>QUESTIONS and ANSWERS</h6>
+          <h5>QUESTIONS & ANSWERS</h5>
           <Search4answer/>
           <QandAList questions={this.state.questions.results} productId={this.props.productId}/>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {TOKEN} from './../../yuki.js';
+import axios from 'axios';
 
 class QForm extends React.Component {
   constructor(props) {
