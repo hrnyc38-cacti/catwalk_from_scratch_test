@@ -5,11 +5,7 @@ function QModal (props) {
   if (!props.show) {
     return null;
   }
-  const handleSubmitQ = (e) => {
-    e.preventDefault();
-    console.log('new question was submitted!');
-    // axios put request here
-  };
+
 
   return (
     <div className="modal" onClick={props.onClose}>
@@ -19,7 +15,7 @@ function QModal (props) {
           <h5 className="modal-subtitle">About the ?ProductName</h5>
         </div>
         <div className="modal-body"> here is a form
-          <QForm onSubmitQ={handleSubmitQ}/>
+          <QForm productId={props.productId}/>
 
         <div className="modal-footer">
           <button className="button" onClick={props.onClose}>Close</button>

@@ -5,7 +5,8 @@ import QModal from './QModal.jsx';
 const qsPerPage = 4;
 let array4holdingQs = [];
 
-function QandAList ({questions}) {
+function QandAList ({questions, productId}) {
+  const [show, setShow] = useState(false);
   if (questions.length > 4) {
     const [qsToShow, setQsToShow] = useState([]);
     const [next, setNext] = useState(4);
@@ -24,8 +25,6 @@ function QandAList ({questions}) {
       setNext(next + qsPerPage);
     };
 
-    const [show, setShow] = useState(false);
-
     return (
       <div>
         <ol>
@@ -36,12 +35,17 @@ function QandAList ({questions}) {
         <button onClick={handleShowMoreQs}>MORE ANSWERED QUESTIONS</button>
         <div>
           <button onClick={() => setShow(true)} >ADD A QUESTION +</button>
-          <QModal show={show} onClose={()=> setShow(false)}/>
+          <QModal show={show} onClose={()=> setShow(false)} productId={productId}/>
         </div>
       </div>
     )
   } else if (questions.length === 0) {
-    return (<button>ADD A QUESTION +</button>)
+    return (
+      <div>
+          <button onClick={() => setShow(true)} >ADD A QUESTION +</button>
+          <QModal show={show} onClose={()=> setShow(false)} productId={productId}/>
+      </div>
+    )
   } else {
     return (
       <div>
@@ -51,8 +55,8 @@ function QandAList ({questions}) {
           })}
         </ol>
         <div>
-          <button>ADD A QUESTION +</button>
-          <QModal />
+          <button onClick={() => setShow(true)} >ADD A QUESTION +</button>
+          <QModal show={show} onClose={()=> setShow(false)} productId={productId}/>
         </div>
       </div>
     )

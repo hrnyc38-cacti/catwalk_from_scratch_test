@@ -39,7 +39,7 @@ class Questions extends React.Component {
         <div>
           <h6>QUESTIONS and ANSWERS</h6>
           <Search4answer/>
-          <QandAList questions={this.state.questions.results}/>
+          <QandAList questions={this.state.questions.results} productId={this.props.productId}/>
 
           {/* <button>MORE ANSWERED QUESTIONS</button> */}
           {/* <button>ADD A QUESTION +</button> */}

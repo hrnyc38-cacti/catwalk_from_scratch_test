@@ -2,7 +2,10 @@ import React from "react";
 
 function Search4answer () {
   return (
-    <input placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'/>
+    <form>
+      <input type="text" placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'/>
+      <button type="submit">Search</button>
+    </form>
   )
 }
 
