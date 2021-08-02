@@ -14,7 +14,7 @@ function QModal (props) {
           <h4 className="modal-title">Ask Your Question</h4>
           <h5 className="modal-subtitle">About the {props.productName}</h5>
         </div>
-        <div className="modal-body"> here is a form
+        <div className="modal-body">
           <QForm productId={props.productId} />
 
         <div className="modal-footer">

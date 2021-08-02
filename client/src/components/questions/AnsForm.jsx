@@ -7,7 +7,8 @@ class AnsForm extends React.Component {
     super(props);
     this.state = {
       fields: {},
-      errors: {}
+      errors: {},
+      selectedFile: null
     }
   }
   handleChange(field, e) {
@@ -48,6 +49,10 @@ class AnsForm extends React.Component {
     return formIsValid;
   }
 
+  handleFileChange = (e) => {
+    this.setState({ selectedFile: event.target.files[0]});
+  }
+
   handleSubmitAns(e) {
     e.preventDefault();
     if (this.handleValidation()) {
@@ -71,16 +76,21 @@ class AnsForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmitAns.bind(this)}>
         <div className="form-group">
-          <label htmlFor="new-answer">Your Answer</label>
-          <input id="new-answer" onChange={this.handleChange.bind(this, 'body')} />
+          <label htmlFor="new-answer">Your Answer </label>
+          <textarea id="new-answer" maxLength="1000" rows="10" col="250"
+          onChange={this.handleChange.bind(this, 'body')} />
         </div>
         <div className="form-group">
-          <label htmlFor="name">Your Nickname</label>
+          <label htmlFor="name">Your Nickname </label>
           <input id="name" onChange={this.handleChange.bind(this, 'name')} />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Your Email</label>
+          <label htmlFor="email">Your Email </label>
           <input type="email" id="email" placeholder="name@example.com" onChange={this.handleChange.bind(this, 'email')} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Upload Photos </label>
+          <input type="file" onChange={this.handleFileChange.bind(this)}/>
         </div>
         <div className="form-group">
           <button type='submit'>Submit</button>
