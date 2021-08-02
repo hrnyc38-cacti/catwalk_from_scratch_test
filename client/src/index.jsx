@@ -63,7 +63,7 @@ class App extends React.Component {
             <Overview currentProduct={this.state.currentProduct} product_id={this.state.product_id} />
           </div>
           <div>
-            <RelatedProducts />
+            <Carousels/>
           </div>
           <div>
             <Questions productId={this.state.currentProductID}/>
