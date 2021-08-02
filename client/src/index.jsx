@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import Questions from './components/questions/index.jsx';
-import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
+import Carousels from './components/carousels/Carousels.jsx';
 import Review from './components/review/Review.jsx';
 import Overview from './components/overview/Overview.jsx';
 import _ from 'underscore';
-import { TOKEN } from '/config.js';
+import { TOKEN } from './config.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class App extends React.Component {
             <Overview currentProduct={this.state.currentProduct} product_id={this.state.product_id} />
           </div>
           <div>
-            <RelatedProducts />
+            <Carousels />
           </div>
           <div>
             <Questions productId={this.state.currentProductID} />

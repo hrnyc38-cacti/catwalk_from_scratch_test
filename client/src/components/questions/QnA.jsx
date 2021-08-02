@@ -1,7 +1,7 @@
 import React from "react";
 import Answers from './Answers.jsx';
 import axios from 'axios';
-import {TOKEN} from './../../yuki.js';
+import {TOKEN} from './../../config.js';
 import AnsModal from './AnsModal.jsx';
 
 class QnA extends React.Component {
