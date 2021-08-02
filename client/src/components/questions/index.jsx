@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import {TOKEN} from './../../yuki.js';
+import { TOKEN } from '../config.js';
 import Search4answer from './Search4answer.jsx';
 import QandAList from './QandAList.jsx';
 
@@ -15,10 +15,10 @@ class Questions extends React.Component {
   componentDidMount() {
     axios.get(
       `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions/?product_id=${this.props.productId}`,
-      {headers: {Authorization: TOKEN}})
+      { headers: { Authorization: TOKEN } })
       .then((results) => {
         //console.log(results);
-        this.setState({questions: results.data})
+        this.setState({ questions: results.data })
         console.log('THIS IS STATE', this.state.questions)
       })
       .catch((err) => {
@@ -38,8 +38,8 @@ class Questions extends React.Component {
       return (
         <div>
           <h5>QUESTIONS & ANSWERS</h5>
-          <Search4answer/>
-          <QandAList questions={this.state.questions.results} productId={this.props.productId}/>
+          <Search4answer />
+          <QandAList questions={this.state.questions.results} productId={this.props.productId} />
 
           {/* <button>MORE ANSWERED QUESTIONS</button> */}
           {/* <button>ADD A QUESTION +</button> */}
