@@ -74,7 +74,7 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <h1>this is fucking bullshit</h1>
+          <h1>this page is loading</h1>
         </div>
       )
     }
