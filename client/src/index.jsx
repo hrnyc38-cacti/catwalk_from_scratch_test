@@ -13,6 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       currentProductID: 11002,
+      currProductName: 'fakeProduct',
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],
       currentProduct: {},
@@ -65,7 +66,7 @@ class App extends React.Component {
             <Carousels />
           </div>
           <div>
-            <Questions productId={this.state.currentProductID} />
+            <Questions productId={this.state.currentProductID} productName={this.state.currProductName}/>
           </div>
           <div>
             <Review />

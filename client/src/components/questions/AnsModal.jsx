@@ -16,10 +16,10 @@ function AnsModal (props) {
       <div className="modal-content" onClick={(e)=> {e.stopPropagation()}}>
         <div className="modal-header">
           <h4 className="modal-title">Submit your Answer</h4>
-          <h5 className="modal-subtitle">ProductName: QuestionBody</h5>
+          <h5 className="modal-subtitle">{props.productName}: {props.question.question_body}</h5>
         </div>
-        <div className="modal-body"> here is a form
-          <AnsForm onSubmitAns={handleSubmitAns} qID={props.qId}/>
+        <div className="modal-body">
+          <AnsForm onSubmitAns={handleSubmitAns} qID={props.question.question_id}/>
 
         <div className="modal-footer">
           <button className="button" onClick={props.onClose}>Close</button>
