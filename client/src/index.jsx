@@ -1,17 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import Questions from './components/questions/Questions.jsx';
+import Questions from './components/questions/index.jsx';
 import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
 import Review from './components/review/Review.jsx';
 import Overview from './components/overview/Overview.jsx';
 //import getProductsByPage from '../lib/helpers';
 import { TOKEN } from '/config.js';
+import _ from 'underscore';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentProduct: 11002,
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],
       currentProduct: {},
@@ -75,7 +78,7 @@ class App extends React.Component {
       return (
         <div>
           <h1>this page is loading</h1>
-        </div>
+        </div >
       )
     }
   }
