@@ -1,0 +1,37 @@
+img {
+  margin-left: auto;
+  /* display: block; */
+  max-width: 35%;
+  height: auto;
+}
+
+.product-info {
+  border: solid 1px;
+  border-color: black;
+}
+
+.style-selection {
+  border: solid 1px;
+  border-color: black;
+}
+
+.product-selectors {
+  border: solid 1px;
+  border-color: black;
+}
+
+.size-selector {
+  size: 200px;
+}
+
+.quantity-selector {
+  size: 200px;
+}
+
+.add-to-bag-button {
+  size: 200px;
+}
+
+.star-checkbox {
+  height: 200px;
+}

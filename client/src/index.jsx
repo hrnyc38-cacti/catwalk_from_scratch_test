@@ -6,7 +6,7 @@ import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
 import Review from './components/review/Review.jsx';
 import Overview from './components/overview/Overview.jsx';
 //import getProductsByPage from '../lib/helpers';
-import {TOKEN} from './config.js';
+import { TOKEN } from '/config.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,16 +14,22 @@ class App extends React.Component {
     this.state = {
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],
+      currentProduct: {},
+      product_id: '11001',
       questions: [],
       answers: [],
-      cart:[]
+      cart: [],
+      finishedLoading: false
     }
   }
 
   componentDidMount() {
     this.getProductsByPage(1, (err, data) => {
-      if (err) {console.log(err);}
-      console.log(data);
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ products: data, currentProduct: data[0], finishedLoading: true })
+      }
     })
   }
 
@@ -33,10 +39,9 @@ class App extends React.Component {
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/?page=${page}`,
       headers: {
         //'User-Agent': 'request',
-        'Authorization': "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"
+        'Authorization': TOKEN
       }
     };
-    console.log('this is token ', TOKEN);
     axios(options)
       .then((res) => {
         callback(null, res.data);
@@ -45,26 +50,36 @@ class App extends React.Component {
         console.log('failed to load data from server');
         callback(err);
       })
-  };
+  }
+
 
   render() {
-    return (
-      <div>
+    if (this.state.finishedLoading) {
+      return (
         <div>
-          <Overview />
+          <div>
+            <Overview currentProduct={this.state.currentProduct} product_id={this.state.product_id} />
+          </div>
+          <div>
+            <RelatedProducts />
+          </div>
+          <div>
+            <Questions />
+          </div>
+          <div>
+            <Review />
+          </div>
         </div>
+      )
+    } else {
+      return (
         <div>
-          <RelatedProducts/>
+          <h1>this is fucking bullshit</h1>
         </div>
-        <div>
-          <Questions />
-        </div>
-        <div>
-          <Review/>
-        </div>
-      </div>
-    )
+      )
+    }
   }
+
 };
 
-ReactDOM.render(<App/>, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));
