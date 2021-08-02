@@ -5,9 +5,7 @@ import Questions from './components/questions/index.jsx';
 import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
 import Review from './components/review/Review.jsx';
 import Overview from './components/overview/Overview.jsx';
-//import {TOKEN} from './yuki.js';
 import _ from 'underscore';
-
 import { TOKEN } from '/config.js';
 
 class App extends React.Component {
@@ -67,7 +65,7 @@ class App extends React.Component {
             <RelatedProducts />
           </div>
           <div>
-            <Questions productId={this.state.currentProductID}/>
+            <Questions productId={this.state.currentProductID} />
           </div>
           <div>
             <Review />

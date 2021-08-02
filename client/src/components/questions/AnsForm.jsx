@@ -1,5 +1,5 @@
 import React from 'react';
-import {TOKEN} from './../../yuki.js';
+import { TOKEN } from '/config.js';
 import axios from 'axios';
 
 class AnsForm extends React.Component {
@@ -13,7 +13,7 @@ class AnsForm extends React.Component {
   handleChange(field, e) {
     let fields = this.state.fields;
     fields[field] = e.target.value;
-    this.setState({fields});
+    this.setState({ fields });
   }
   handleValidation() {
     let fields = this.state.fields;
@@ -44,7 +44,7 @@ class AnsForm extends React.Component {
       }
     }
 
-    this.setState({errors: errors});
+    this.setState({ errors: errors });
     return formIsValid;
   }
 
@@ -58,9 +58,9 @@ class AnsForm extends React.Component {
       newlyAdd.email = this.state.fields['email'];
       //question_id
       axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions/${this.props.qID}/answers`, newlyAdd,
-      {headers: {Authorization: TOKEN}})
-        .then(()=>{alert('New answer submitted!');})
-        .catch((err) => {console.log('failed to submit answer');});
+        { headers: { Authorization: TOKEN } })
+        .then(() => { alert('New answer submitted!'); })
+        .catch((err) => { console.log('failed to submit answer'); });
       //alert('New answer submitted!');
     } else {
       alert('Form has errors.');
@@ -72,15 +72,15 @@ class AnsForm extends React.Component {
       <form onSubmit={this.handleSubmitAns.bind(this)}>
         <div className="form-group">
           <label htmlFor="new-answer">Your Answer</label>
-          <input id="new-answer" onChange={this.handleChange.bind(this, 'body')}/>
+          <input id="new-answer" onChange={this.handleChange.bind(this, 'body')} />
         </div>
         <div className="form-group">
           <label htmlFor="name">Your Nickname</label>
-          <input id="name" onChange={this.handleChange.bind(this, 'name')}/>
+          <input id="name" onChange={this.handleChange.bind(this, 'name')} />
         </div>
         <div className="form-group">
           <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" placeholder="name@example.com" onChange={this.handleChange.bind(this, 'email')}/>
+          <input type="email" id="email" placeholder="name@example.com" onChange={this.handleChange.bind(this, 'email')} />
         </div>
         <div className="form-group">
           <button type='submit'>Submit</button>
