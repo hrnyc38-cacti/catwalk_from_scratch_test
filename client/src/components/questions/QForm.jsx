@@ -57,9 +57,11 @@ class QForm extends React.Component {
       newlyAdd.name = this.state.fields['nickname'];
       newlyAdd.email = this.state.fields['email'];
       newlyAdd.product_id = this.props.productId;
-      // axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions`, newlyAdd,
-      // {headers: {Authorization: TOKEN}})
-      alert('New question submitted!');
+      axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions`, newlyAdd,
+      {headers: {Authorization: TOKEN}})
+        .then(()=>{alert('New question submitted!');})
+        .catch((err) => { console.log('failed to submit new question'); });
+      //alert('New question submitted!');
     } else {
       alert('Form has errors.');
     }
