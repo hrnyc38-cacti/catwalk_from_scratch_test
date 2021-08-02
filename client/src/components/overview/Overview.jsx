@@ -1,5 +1,5 @@
 import React from "react";
-import { TOKEN } from '/config.js';
+import {TOKEN} from './../../config.js';
 import axios from 'axios';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelection from './StyleSelection.jsx';

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import {TOKEN} from './../../yuki.js';
+import {TOKEN} from './../../config.js';
 import Search4answer from './Search4answer.jsx';
 import QandAList from './QandAList.jsx';
 

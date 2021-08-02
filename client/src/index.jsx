@@ -5,10 +5,9 @@ import Questions from './components/questions/index.jsx';
 import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
 import Review from './components/review/Review.jsx';
 import Overview from './components/overview/Overview.jsx';
-//import {TOKEN} from './yuki.js';
+import {TOKEN} from './config.js';
 import _ from 'underscore';
-
-import { TOKEN } from '/config.js';
+//import { TOKEN } from '/config.js';
 
 class App extends React.Component {
   constructor(props) {
