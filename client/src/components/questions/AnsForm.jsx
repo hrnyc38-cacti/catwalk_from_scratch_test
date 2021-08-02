@@ -1,5 +1,5 @@
 import React from 'react';
-import {TOKEN} from './../../yuki.js';
+import {TOKEN} from './../../config.js';
 import axios from 'axios';
 
 class AnsForm extends React.Component {
