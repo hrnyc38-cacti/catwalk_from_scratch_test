@@ -12,10 +12,10 @@ function QModal (props) {
       <div className="modal-content" onClick={(e)=> {e.stopPropagation()}}>
         <div className="modal-header">
           <h4 className="modal-title">Ask Your Question</h4>
-          <h5 className="modal-subtitle">About the ?ProductName</h5>
+          <h5 className="modal-subtitle">About the {props.productName}</h5>
         </div>
         <div className="modal-body"> here is a form
-          <QForm productId={props.productId}/>
+          <QForm productId={props.productId} />
 
         <div className="modal-footer">
           <button className="button" onClick={props.onClose}>Close</button>

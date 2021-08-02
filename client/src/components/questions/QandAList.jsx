@@ -5,7 +5,7 @@ import QModal from './QModal.jsx';
 const qsPerPage = 4;
 let array4holdingQs = [];
 
-function QandAList ({questions, productId}) {
+function QandAList ({questions, productId, productName}) {
   const [show, setShow] = useState(false);
   if (questions.length > 4) {
     const [qsToShow, setQsToShow] = useState([]);
@@ -29,13 +29,13 @@ function QandAList ({questions, productId}) {
       <div>
         <ol>
           { qsToShow.map((question, i) => {
-            return <QnA key={i} question={question}/>
+            return <QnA key={i} question={question} productName={productName}/>
           })}
         </ol>
         <button onClick={handleShowMoreQs}>MORE ANSWERED QUESTIONS</button>
         <div>
           <button onClick={() => setShow(true)} >ADD A QUESTION +</button>
-          <QModal show={show} onClose={()=> setShow(false)} productId={productId}/>
+          <QModal show={show} onClose={()=> setShow(false)} productId={productId} productName={productName}/>
         </div>
       </div>
     )
@@ -43,7 +43,7 @@ function QandAList ({questions, productId}) {
     return (
       <div>
           <button onClick={() => setShow(true)} >ADD A QUESTION +</button>
-          <QModal show={show} onClose={()=> setShow(false)} productId={productId}/>
+          <QModal show={show} onClose={()=> setShow(false)} productId={productId} productName={productName}/>
       </div>
     )
   } else {
@@ -51,12 +51,12 @@ function QandAList ({questions, productId}) {
       <div>
         <ol>
           { questions.map((question, i) => {
-            return <QnA key={i} question={question}/>
+            return <QnA key={i} question={question} productName={productName}/>
           })}
         </ol>
         <div>
           <button onClick={() => setShow(true)} >ADD A QUESTION +</button>
-          <QModal show={show} onClose={()=> setShow(false)} productId={productId}/>
+          <QModal show={show} onClose={()=> setShow(false)} productId={productId} productName={productName}/>
         </div>
       </div>
     )
