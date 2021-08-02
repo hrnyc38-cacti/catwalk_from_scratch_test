@@ -2,46 +2,49 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import Questions from './components/questions/Questions.jsx';
-import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
+import Carousels from './components/carousels/Carousels.jsx';
 import Review from './components/review/Review.jsx';
 import Overview from './components/overview/Overview.jsx';
-//import getProductsByPage from '../lib/helpers';
-import {TOKEN} from './config.js';
+//import {TOKEN} from './yuki.js';
+import _ from 'underscore';
+
+import { TOKEN } from '/config.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct: null,
+      currentProductID: 11002,
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],
+      currentProduct: {},
+      product_id: '11001',
       questions: [],
       answers: [],
-      cart:[]
+      cart: [],
+      finishedLoading: false
     }
   }
 
   componentDidMount() {
-    console.log('this is token ', TOKEN);
-    this.getProductById(11001, (err, data) => {
-      if (err) {console.log(err);}
-      console.log(data);
-      this.setState({
-        currentProduct: data
-      })
+    this.getProductsByPage(1, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ products: data, currentProduct: data[0], finishedLoading: true })
+      }
     })
   }
 
-  getProductById(id, callback) {
+  getProductsByPage(page, callback) {
     let options = {
       type: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/?page=${page}`,
       headers: {
         //'User-Agent': 'request',
-        'Authorization': `${TOKEN}`
+        'Authorization': TOKEN
       }
     };
-
     axios(options)
       .then((res) => {
         callback(null, res.data);
@@ -50,26 +53,36 @@ class App extends React.Component {
         console.log('failed to load data from server');
         callback(err);
       })
-  };
+  }
+
 
   render() {
-    return (
-      <div>
+    if (this.state.finishedLoading) {
+      return (
         <div>
-          <Overview />
+          <div>
+            <Overview currentProduct={this.state.currentProduct} product_id={this.state.product_id} />
+          </div>
+          <div>
+            <Carousels/>
+          </div>
+          <div>
+            <Questions productId={this.state.currentProductID}/>
+          </div>
+          <div>
+            <Review />
+          </div>
         </div>
+      )
+    } else {
+      return (
         <div>
-          <RelatedProducts/>
+          <h1>this page is loading</h1>
         </div>
-        <div>
-          <Questions productId={this.state.currentProduct.id}/>
-        </div>
-        <div>
-          <Review/>
-        </div>
-      </div>
-    )
+      )
+    }
   }
+
 };
 
-ReactDOM.render(<App/>, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));
