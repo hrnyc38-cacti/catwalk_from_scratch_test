@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import Questions from './components/questions/Questions.jsx';
+import Questions from './components/questions/index.jsx';
 import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
 import Review from './components/review/Review.jsx';
 import Overview from './components/overview/Overview.jsx';
 //import getProductsByPage from '../lib/helpers';
-import {TOKEN} from './config.js';
+import {TOKEN} from './yuki.js';
+import _ from 'underscore';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct: null,
+      currentProduct: 11002,
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],
       questions: [],
@@ -21,36 +23,36 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    console.log('this is token ', TOKEN);
-    this.getProductById(11001, (err, data) => {
-      if (err) {console.log(err);}
-      console.log(data);
-      this.setState({
-        currentProduct: data
-      })
-    })
-  }
+  // componentDidMount() {
+  //   console.log('this is token ', TOKEN);
+  //   this.getProductById(11001, (err, data) => {
+  //     if (err) {console.log(err);}
+  //     console.log(data);
+  //     this.setState({
+  //       currentProduct: data
+  //     })
+  //   })
+  // }
 
-  getProductById(id, callback) {
-    let options = {
-      type: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}`,
-      headers: {
-        //'User-Agent': 'request',
-        'Authorization': `${TOKEN}`
-      }
-    };
+  // getProductById(id, callback) {
+  //   let options = {
+  //     type: 'get',
+  //     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${id}`,
+  //     headers: {
+  //       //'User-Agent': 'request',
+  //       'Authorization': `${TOKEN}`
+  //     }
+  //   };
 
-    axios(options)
-      .then((res) => {
-        callback(null, res.data);
-      })
-      .catch((err) => {
-        console.log('failed to load data from server');
-        callback(err);
-      })
-  };
+  //   axios(options)
+  //     .then((res) => {
+  //       callback(null, res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log('failed to load data from server');
+  //       callback(err);
+  //     })
+  // };
 
   render() {
     return (
@@ -62,7 +64,7 @@ class App extends React.Component {
           <RelatedProducts/>
         </div>
         <div>
-          <Questions productId={this.state.currentProduct.id}/>
+          <Questions productId={this.state.currentProduct}/>
         </div>
         <div>
           <Review/>
