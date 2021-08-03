@@ -2,8 +2,8 @@ import React from "react";
 import axios from 'axios';
 //import { TOKEN } from './config.js';
 import { TOKEN } from './../../config.js';
-import Search4answer from './Search4answer.jsx';
-import QandAList from './QandAList.jsx';
+import SearchPage from './SearchPage.jsx';
+//import QandAList from './QandAList.jsx';
 
 class Questions extends React.Component {
   constructor(props) {
@@ -39,8 +39,8 @@ class Questions extends React.Component {
       return (
         <div>
           <h5>QUESTIONS & ANSWERS</h5>
-          <Search4answer />
-          <QandAList questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName} />
+          <SearchPage questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName}/>
+          {/* <QandAList questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName} /> */}
 
           {/* <button>MORE ANSWERED QUESTIONS</button> */}
           {/* <button>ADD A QUESTION +</button> */}
