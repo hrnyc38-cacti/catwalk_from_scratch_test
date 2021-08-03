@@ -57,9 +57,11 @@ class QForm extends React.Component {
       newlyAdd.name = this.state.fields['nickname'];
       newlyAdd.email = this.state.fields['email'];
       newlyAdd.product_id = this.props.productId;
-      // axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions`, newlyAdd,
-      // {headers: {Authorization: TOKEN}})
-      alert('New question submitted!');
+      axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions`, newlyAdd,
+      {headers: {Authorization: TOKEN}})
+        .then(()=>{alert('New question submitted!');})
+        .catch((err) => { console.log('failed to submit new question'); });
+      //alert('New question submitted!');
     } else {
       alert('Form has errors.');
     }
@@ -69,18 +71,21 @@ class QForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmitQ.bind(this)}>
         <div className="form-group">
-          <label htmlFor="new-q">Your Question</label>
-          <input id="new-q" placeholder="Why did you like the product or not?" onChange={this.handleChange.bind(this, 'newq')}/>
+          <label htmlFor="new-q">Your Question </label>
+          <textarea id="new-q" placeholder="Why did you like the product or not?" maxLength="1000" rows="10" col="250"
+          onChange={this.handleChange.bind(this, 'newq')}/>
         </div>
         <div className="form-group">
-          <label htmlFor="name">Your Nickname</label>
-          <input id="name" placeholder="Example: jackson11!" onChange={this.handleChange.bind(this, 'nickname')}/>
-          <p>For privacy reasons, do not use your full name or email address</p>
+          <label htmlFor="name">Your Nickname </label>
+          <input id="name" placeholder="Example: jackson11!"
+          onChange={this.handleChange.bind(this, 'nickname')}/>
+          <p className="side-note">For privacy reasons, do not use your full name or email address</p>
         </div>
         <div className="form-group">
-          <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" placeholder="name@example.com" onChange={this.handleChange.bind(this, 'email')}/>
-          <p>For authentication reasons, you will not be emailed</p>
+          <label htmlFor="email">Your Email </label>
+          <input type="email" id="email" placeholder="name@example.com"
+          onChange={this.handleChange.bind(this, 'email')}/>
+          <p className="side-note">For authentication reasons, you will not be emailed</p>
         </div>
         <div className="form-group">
           <button type='submit'>Submit</button>
