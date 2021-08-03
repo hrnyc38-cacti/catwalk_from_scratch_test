@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductID: 11002,
+      currentProductID: 11003,
       currProductName: 'fakeProduct',
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],

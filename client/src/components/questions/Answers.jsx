@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Answer from './Answer.jsx';
 
-const asPerPage = 2;
+const ansPerPage = 2;
 let array4holdingAs = [];
 
 function Answers ({answers}) {

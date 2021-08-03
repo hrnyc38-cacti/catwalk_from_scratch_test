@@ -50,7 +50,12 @@ class AnsForm extends React.Component {
   }
 
   handleFileChange = (e) => {
-    this.setState({ selectedFile: event.target.files[0]});
+    if (e.target.files.length > 5) {
+      alert('Maximum 5 files accepted.');
+      e.preventDefault();
+    } else {
+      this.setState({ selectedFile: e.target.files });
+    }
   }
 
   handleSubmitAns(e) {
@@ -61,12 +66,15 @@ class AnsForm extends React.Component {
       newlyAdd.body = this.state.fields['body'];
       newlyAdd.name = this.state.fields['name'];
       newlyAdd.email = this.state.fields['email'];
-      //question_id
-      axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions/${this.props.qID}/answers`, newlyAdd,
-        { headers: { Authorization: TOKEN } })
-        .then(() => { alert('New answer submitted!'); })
-        .catch((err) => { console.log('failed to submit answer'); });
-      //alert('New answer submitted!');
+      newlyAdd.img = this.state.selectedFile;
+      //const formData = new FormData();
+      //formData.append(this.state.selectedFile);
+      console.log('THIS IS newlyadd', newlyAdd);
+      // axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions/${this.props.qID}/answers`, newlyAdd,
+      //   { headers: { Authorization: TOKEN } })
+      //   .then(() => { alert('New answer submitted!'); })
+      //   .catch((err) => { console.log('failed to submit answer'); });
+      alert('New answer submitted!');
     } else {
       alert('Form has errors.');
     }
@@ -90,7 +98,7 @@ class AnsForm extends React.Component {
         </div>
         <div className="form-group">
           <label htmlFor="email">Upload Photos </label>
-          <input type="file" onChange={this.handleFileChange.bind(this)}/>
+          <input type="file" multiple onChange={this.handleFileChange.bind(this)}/>
         </div>
         <div className="form-group">
           <button type='submit'>Submit</button>
