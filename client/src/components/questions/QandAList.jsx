@@ -7,24 +7,23 @@ let array4holdingQs = [];
 
 function QandAList ({questions, productId, productName}) {
   const [show, setShow] = useState(false);
+  const [qsToShow, setQsToShow] = useState([]);
+  const [next, setNext] = useState(4);
+  const loopWithSlice = (start, end) => {
+    const slicedQs = questions.slice(start, end);
+    array4holdingQs = [...array4holdingQs, ...slicedQs];
+    setQsToShow(array4holdingQs);
+  }
+  useEffect(() => {
+    loopWithSlice(0, qsPerPage);
+  }, []);
+
+  const handleShowMoreQs = () => {
+    loopWithSlice(next, next + qsPerPage);
+    setNext(next + qsPerPage);
+  };
+
   if (questions.length > 4) {
-    const [qsToShow, setQsToShow] = useState([]);
-    const [next, setNext] = useState(4);
-
-    const loopWithSlice = (start, end) => {
-      const slicedQs = questions.slice(start, end);
-      array4holdingQs = [...array4holdingQs, ...slicedQs];
-      setQsToShow(array4holdingQs);
-    }
-    useEffect(() => {
-      loopWithSlice(0, qsPerPage);
-    }, []);
-
-    const handleShowMoreQs = () => {
-      loopWithSlice(next, next + qsPerPage);
-      setNext(next + qsPerPage);
-    };
-
     return (
       <div>
         <ol>

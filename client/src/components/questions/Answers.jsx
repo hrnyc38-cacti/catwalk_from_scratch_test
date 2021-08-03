@@ -14,15 +14,15 @@ function Answers ({answers}) {
   if (ansArr.length <= 2) {
     return (<ul>{ansArr}</ul>)
   } else {
-    console.log('THIS IS ANS ARR ', ansArr);
+    //console.log('THIS IS ANS ARR ', ansArr);
     const [ansToShow, setAnsToShow] = useState([]);
     let [next, setNext] = useState(2);
-    console.log('THIS IS NEXT ', next, setNext);
+    //console.log('THIS IS NEXT ', next, setNext);
 
     let loopWithSlice = (start, end) => {
       const slicedAs = ansArr.slice(start, end);
       array4holdingAs = [...array4holdingAs, ...slicedAs];
-      console.log('START END ARR4 ', start, end, array4holdingAs);
+      //console.log('START END ARR4 ', start, end, array4holdingAs);
       setAnsToShow(array4holdingAs);
     }
 
