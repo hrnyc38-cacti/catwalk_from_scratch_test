@@ -43,11 +43,13 @@ class Answer extends React.Component {
   };
 
   render() {
+    const formattedDate = new Date(this.props.answer.date).toLocaleDateString({}, {timeZone:"UTC",month:"long", day:"2-digit", year:"numeric"})
+    //console.log(formattedDate);
     return (
       <li>
         <div>{this.props.answer.body}</div>
         <div>
-          <span>by {this.props.answer.answerer_name}, {this.props.answer.date.slice(0, 10)}</span>
+          <span>by {this.props.answer.answerer_name}, {formattedDate}</span>
           <span> | Helpful? <button onClick={this.handleHelpful.bind(this)}>Yes {`(${this.state.count})`}</button></span>
           <span> | <button onClick={this.handleReport.bind(this)}>{this.state.isReport}</button></span>
         </div>
