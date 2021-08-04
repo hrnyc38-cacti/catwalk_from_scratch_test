@@ -34,3 +34,13 @@
   font-size: smaller;
   color: darkgrey;
 }
+
+.text-bttn {
+  text-decoration: underline;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+}
