@@ -41,7 +41,11 @@
     "react-dom": "^17.0.2",
     "react-elastic-carousel": "^0.11.5",
     "react-hot-loader": "^4.13.0",
+<<<<<<< HEAD
     "react-multi-carousel": "^2.6.3",
+=======
+    "react-icons": "^4.2.0",
+>>>>>>> a19b7906dc9721b730ee758064b2dede93a7608b
     "react-rating-stars-component": "^2.2.0",
     "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.20",

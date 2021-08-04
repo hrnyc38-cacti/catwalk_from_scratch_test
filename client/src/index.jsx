@@ -69,12 +69,17 @@ class App extends React.Component {
     if (this.state.finishedLoading) {
       return (
         <div>
-          <div>
+          {/* <div>
             <Overview currentProduct={this.state.currentProduct} product_id={this.state.product_id} />
           </div>
           <div>
+<<<<<<< HEAD
             <Carousels productId={this.state.currentProductID} cardOnClick={this.cardOnClick}/>
           </div>
+=======
+            <Carousels />
+          </div> */}
+>>>>>>> a19b7906dc9721b730ee758064b2dede93a7608b
           <div>
             <Questions productId={this.state.currentProductID} productName={this.state.currProductName}/>
           </div>

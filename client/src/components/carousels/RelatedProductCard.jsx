@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
+<<<<<<< HEAD
 import { TOKEN } from './../../config.js';
+=======
+import {TOKEN} from './../../config.js';
+>>>>>>> a19b7906dc9721b730ee758064b2dede93a7608b
 
 class RelatedProductCard extends React.Component {
   constructor(props) {
