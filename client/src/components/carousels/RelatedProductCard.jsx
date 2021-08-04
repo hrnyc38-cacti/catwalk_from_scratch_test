@@ -69,7 +69,7 @@ class RelatedProductCard extends React.Component {
       <div className='singleCard' onClick={(e) => this.props.cardOnClick(this.state.cardData.id)}>
         <div className='imageContainer'>
           <img className='cardImage' src={this.state.cardData.url}></img>
-          <FaRegStar />
+          <FaRegStar className='imageButton' />
         </div>
         <div>
           <p className='ProductInfo'>{this.state.cardData.category}</p>
