@@ -2,13 +2,13 @@ import React from 'react';
 
 
 function ProductInfo(props) {
-  //console.log(props);
+  //console.log('this is category', props.category);
   return (
     <div className="product-info">
       <h5>insert stars and a link to reviews here</h5>
-      <h2>{props.category}</h2>
+      <h5>{props.category}</h5>
       <h1>{props.name}</h1>
-      <h3>{props.price}</h3>
+      <h4>{props.price}</h4>
     </div>
   )
 };
