@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductID: 11003,
+      currentProductID: 11001,
       currProductName: 'fakeProduct',
       products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
       reviews: [],
@@ -23,6 +23,7 @@ class App extends React.Component {
       cart: [],
       finishedLoading: false
     }
+    this.cardOnClick = this.cardOnClick.bind();
   }
 
   componentDidMount() {
@@ -34,7 +35,16 @@ class App extends React.Component {
       }
     })
   }
-
+  componentDidUpdate(previousProps, previousState, snapShot) {
+    if(previousState.currentProductID !== this.state.currentProductID) {
+      this.setState({currentProductID: this.state.currentProductID});
+    }
+  }
+  cardOnClick = (e) => {
+    console.log('The sent item: ', e);
+    this.setState({currentProductID: e});
+    console.log('The state after updating: ', this.state.currentProductID)
+  }
   getProductsByPage(page, callback) {
     let options = {
       type: 'get',
@@ -59,12 +69,12 @@ class App extends React.Component {
     if (this.state.finishedLoading) {
       return (
         <div>
-          {/* <div>
+          <div>
             <Overview currentProduct={this.state.currentProduct} product_id={this.state.product_id} />
           </div>
           <div>
-            <Carousels />
-          </div> */}
+            <Carousels productId={this.state.currentProductID} cardOnClick={this.cardOnClick}/>
+          </div>
           <div>
             <Questions productId={this.state.currentProductID} productName={this.state.currProductName}/>
           </div>
@@ -72,7 +82,7 @@ class App extends React.Component {
             <Review />
           </div>
         </div>
-      )
+      );
     } else {
       return (
         <div>
