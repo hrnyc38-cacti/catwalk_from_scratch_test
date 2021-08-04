@@ -1,11 +1,9 @@
 import React from "react";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
-<<<<<<< HEAD
 import { TOKEN } from './../../config.js';
-=======
-import {TOKEN} from './../../config.js';
->>>>>>> a19b7906dc9721b730ee758064b2dede93a7608b
+import { FaRegStar } from "react-icons/fa";
+
 
 class RelatedProductCard extends React.Component {
   constructor(props) {
@@ -71,7 +69,7 @@ class RelatedProductCard extends React.Component {
       <div className='singleCard' onClick={(e) => this.props.cardOnClick(this.state.cardData.id)}>
         <div className='imageContainer'>
           <img className='cardImage' src={this.state.cardData.url}></img>
-          <i className="far fa-star"></i>
+          <FaRegStar />
         </div>
         <div>
           <p className='ProductInfo'>{this.state.cardData.category}</p>
