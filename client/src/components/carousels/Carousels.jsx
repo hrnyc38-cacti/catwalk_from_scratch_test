@@ -3,21 +3,12 @@ import axios from "axios";
 import RelatedCarousel from "./RelatedCarousel.jsx";
 
 
-class Carousels extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productID: 11001
-    };
-  }
-
-  render () {
+var Carousels = (props) => {
     return (
       <div className="ProductCarousels">
-        <RelatedCarousel productID={this.state.productID}/>
+        <RelatedCarousel productId={props.productId}  cardOnClick={props.cardOnClick}/>
       </div>
 
     );
-  }
 }
 export default Carousels;
