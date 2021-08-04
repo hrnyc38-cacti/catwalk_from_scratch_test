@@ -1,7 +1,7 @@
 import React from "react";
 import { BsStarFill } from 'react-icons/bs';
 import { BsStar } from 'react-icons/bs';
-import { FaStar } from 'react-icons/fa';
+import { BsStarHalf } from 'react-icons/bs';
 
 function StarSum ({ratings}) {
   let star = [];
@@ -34,7 +34,7 @@ function StarSum ({ratings}) {
   }
   return (
     <div>
-      <span>{averageStar}</span>
+      <span className="star-sum">{averageStar} </span>
       {getStars(Math.floor(averageStar))}
     </div>
 

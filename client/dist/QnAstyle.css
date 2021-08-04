@@ -44,3 +44,11 @@
   overflow: hidden;
   outline:none;
 }
+
+.star-sum {
+  font-size: 30px;
+}
+
+.bar-tag {
+  color:rgba(0, 0, 0, 0)
+}

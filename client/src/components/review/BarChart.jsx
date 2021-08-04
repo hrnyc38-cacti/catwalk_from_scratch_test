@@ -21,15 +21,21 @@ function BarChart({ratings}) {
             width: (item / max) * 100 + '%',
             height: 'auto',
           }
+          // let fillStyle = {
+          //   backgroundColor: 'rgba(128,128,128, .5)',
+          //   width: (max - item) / max * 100 + '%',
+          //   height: 'auto',
+          // }
           return (
             <tr key={i}>
               <td>
                 {labels[i]}
               </td>
-              <td width="40px">
+              <td width="140px">
                 <div style={style}>
                   <span>{item}</span>
                 </div>
+                {/* <div style={fillStyle}></div> */}
               </td>
             </tr>
           )
