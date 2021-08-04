@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
+import { TOKEN } from './../../config.js';
 
 class RelatedProductCard extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class RelatedProductCard extends React.Component {
       type: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productID}`,
       headers: {
-        Authorization: `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`
+        Authorization: TOKEN
       },
       params: {
         product_id: this.props.productID
