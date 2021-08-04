@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import Questions from './components/questions/index.jsx';
 import Carousels from './components/carousels/Carousels.jsx';
-import Review from './components/review/Review.jsx';
+import Review from './components/review/index.jsx';
 import Overview from './components/overview/Overview.jsx';
 import _ from 'underscore';
 import { TOKEN } from './config.js';
@@ -134,7 +134,7 @@ class App extends React.Component {
             <Questions productId={this.state.currentProductID} productName={this.state.currProductName} />
           </div>
           <div>
-            <Review />
+            <Review productId={'11001'}/>
           </div>
         </div>
       );
