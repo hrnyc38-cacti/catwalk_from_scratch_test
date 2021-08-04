@@ -50,8 +50,8 @@ class Answer extends React.Component {
         <div>{this.props.answer.body}</div>
         <div>
           <span>by {this.props.answer.answerer_name}, {formattedDate}</span>
-          <span> | Helpful? <button onClick={this.handleHelpful.bind(this)}>Yes {`(${this.state.count})`}</button></span>
-          <span> | <button onClick={this.handleReport.bind(this)}>{this.state.isReport}</button></span>
+          <span> | Helpful? <button className="text-bttn" onClick={this.handleHelpful.bind(this)}>Yes {`(${this.state.count})`}</button></span>
+          <span> | <button className="text-bttn" onClick={this.handleReport.bind(this)}>{this.state.isReport}</button></span>
         </div>
       </li>
     )

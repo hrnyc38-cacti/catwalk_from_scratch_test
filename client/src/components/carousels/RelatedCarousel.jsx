@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import RelatedProductCard from './RelatedProductCard.jsx';
+import Card from './Card.jsx';
 import Carousel from 'react-elastic-carousel';
 import { TOKEN } from './../../config.js';
 
@@ -52,7 +52,7 @@ class RelatedCarousel extends React.Component {
         <Carousel breakPoints={breakPoints} >
           {this.state.relatedDataID.map(product => {
             return (
-              <RelatedProductCard key={product} productID={product} cardOnClick={this.props.cardOnClick}/>
+              <Card key={product} productID={product} cardOnClick={this.props.cardOnClick}/>
             );
           })}
         </Carousel >
