@@ -23,7 +23,7 @@ class YourOutfit extends React.Component {
     return (
       <div>
         <h3>Your Outfit</h3>
-        {this.state.outFits.length > 0 ? <Card productID= {this.props.productId} />: <Card /> }
+        {this.state.outFits.length > 0 ? <Card productID= {this.props.productId} />: <Card handleClick={this.handleClick} /> }
       </div>
     );
   }

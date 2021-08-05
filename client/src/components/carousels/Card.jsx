@@ -3,7 +3,7 @@ import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 import { TOKEN } from './../../config.js';
 import { FaRegStar } from "react-icons/fa";
-
+import { FaPlusCircle } from "react-icons/fa";
 
 class Card extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class Card extends React.Component {
   }
 
   componentDidMount() {
+    if (this.state.productId) {
     let options = {
       type: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productID}`,
@@ -63,11 +64,15 @@ class Card extends React.Component {
       .catch((err) => {
         console.log(err);
       });
+    }
 
   }
   eventHandler(e) {
+    console.log(e);
     if (e === 'imageButton') {
-      console.log(true);
+      console.log('related button');
+    } else if (e === 'outfitImage') {
+
     } else {
       this.props.cardOnClick(this.state.cardData.id);
     }
@@ -75,7 +80,9 @@ class Card extends React.Component {
   render() {
     if (!this.state.productId) {
       return (
-        <div className='singleCard' onClick={(e) => this.eventHandler(e.target.classList[0])}></div>
+        <div className='singleCard  outfitCard' onClick={(e) => this.eventHandler(e.target.classList[0])}>
+          <FaPlusCircle  className='outfitImage'/>
+        </div>
       );
     }
     return (
