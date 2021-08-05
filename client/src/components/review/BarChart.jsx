@@ -1,12 +1,11 @@
 import React from "react";
-//import { max } from 'underscore';
 
 function BarChart({ratings}) {
   let labels = [];
   let datapt = [];
   for (var k in ratings) {
-    labels.push(k + ' stars');
-    datapt.push(parseInt(ratings[k]))
+    labels.unshift(k + ' stars');
+    datapt.unshift(parseInt(ratings[k]))
   }
 
   const max = Math.max.apply(null, datapt);
