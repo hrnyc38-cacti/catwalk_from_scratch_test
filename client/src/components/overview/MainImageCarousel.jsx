@@ -10,21 +10,31 @@ class MainImageCarousel extends React.Component {
     this.state = {
       currentPhotos: []
     };
+    this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
   }
 
   componentDidUpdate() {
     //console.log(this.props);
   }
 
+  handleThumbnailClick(index) {
+    console.log('this workED', index);
+    let newState = {
+      photoIndex: index,
+      mainImage: this.props.currentPhotos[index]
+    }
+    this.props.handleUpdateMainAppState(newState);
+  }
+
 
   render() {
-    let photoURL = this.props.currentPhotos[this.props.photoIndex];
+    let photoURL = this.props.mainImage;
     return (
       <div className="overview-carousel" >
         <div className="thumbs-slider">
-          {this.props.currentThumbs.map((thumb) => {
+          {this.props.currentThumbs.map((thumb, index) => {
             return (
-              <div className="thumbs" key={thumb}>
+              <div className="thumbs" key={thumb} onClick={() => this.handleThumbnailClick(index)}>
                 <img src={thumb} />
               </div>
             )

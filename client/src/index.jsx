@@ -24,7 +24,8 @@ class App extends React.Component {
       currentCategory: '',
       photoIndex: 0,
       styleIndex: 0,
-      styleName: ''
+      styleName: '',
+      mainImage: ''
     }
     this.cardOnClick = this.cardOnClick.bind();
     this.handleUpdateMainAppState = this.handleUpdateMainAppState.bind(this);
@@ -60,12 +61,9 @@ class App extends React.Component {
     };
     axios(options)
       .then((res) => {
-        this.setState({ products: res.data, currentProduct: res.data[0] })
-      })
-      .then((res) => {
         let options2 = {
           type: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.state.currentProduct.id}/styles`,
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${res.data[0].id}/styles`,
           headers: {
             'Authorization': TOKEN
           }
@@ -83,11 +81,14 @@ class App extends React.Component {
               currentThumbsArray.push(photoData[i].thumbnail_url);
             }
             this.setState({
+              products: res.data,
+              currentProduct: res.data[0],
               currentStyles: results.data.results,
               currentPhotos: currentPhotosArray,
-              currentCategory: this.state.currentProduct.category.toUpperCase(),
+              currentCategory: res.data[0].category.toUpperCase(),
               currentThumbs: currentThumbsArray,
               styleName: results.data.results[this.state.styleIndex].name,
+              mainImage: photoData[this.state.photoIndex].url,
               finishedLoading: true
             })
           });
@@ -114,6 +115,7 @@ class App extends React.Component {
               photoIndex={this.state.photoIndex}
               styleIndex={this.state.styleIndex}
               styleName={this.state.styleName}
+              mainImage={this.state.mainImage}
               handleUpdateMainAppState={this.handleUpdateMainAppState} />
           </div>
           <div>

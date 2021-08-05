@@ -45,10 +45,13 @@ class Overview extends React.Component {
       <div className="grid-container">
         <div className="grid-child-1">
           <MainImageCarousel
+            handleUpdateMainAppState={this.props.handleUpdateMainAppState}
+            currentProduct={this.props.currentProduct}
             currentPhotos={this.props.currentPhotos}
             currentStyles={this.props.currentStyles}
             currentThumbs={this.props.currentThumbs}
             photoIndex={this.props.photoIndex}
+            mainImage={this.props.mainImage}
             styleIndex={this.props.styleIndex} />
         </div>
         <div className="grid-child-2">
