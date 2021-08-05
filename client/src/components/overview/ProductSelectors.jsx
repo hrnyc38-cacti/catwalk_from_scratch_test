@@ -14,7 +14,7 @@ class ProductSelectors extends React.Component {
   handleToggleAddToFavoritesClick(e) {
     let newFavsArray = this.props.currentFavorites;
     //newFavsArray.push({})
-    console.log(this.props.currentProduct);
+    //console.log(this.props.currentProduct);
 
   }
 
@@ -25,8 +25,8 @@ class ProductSelectors extends React.Component {
     // for (let key in currentStyles[styleIndex].skus) {
     //   arrayOfSKUS.push(currentStyles[styleIndex].skus.[key])
     // }
-    console.log('arrayOfSKUS', arrayOfSKUS);
-    console.log('next', this.props.currentStyles);
+    //console.log('arrayOfSKUS', arrayOfSKUS);
+    //console.log('next', this.props.currentStyles);
     return (
       <div className="product-selectors">
         <form>

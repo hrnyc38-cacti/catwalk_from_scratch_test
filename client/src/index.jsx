@@ -12,14 +12,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductID: 11003,
-      currProductName: 'fakeProduct',
-      products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
-      reviews: [],
+      products: [],
       currentProduct: {},
-      product_id: '11001',
-      questions: [],
-      answers: [],
       cart: [],
       finishedLoading: false,
       currentProduct: {},
@@ -51,9 +45,9 @@ class App extends React.Component {
     }
   }
   cardOnClick = (e) => {
-    console.log('The sent item: ', e);
+    //console.log('The sent item: ', e);
     this.setState({ currentProductID: e });
-    console.log('The state after updating: ', this.state.currentProductID)
+    //console.log('The state after updating: ', this.state.currentProductID)
   }
 
   getProductsByPage(page) {
@@ -96,11 +90,6 @@ class App extends React.Component {
               styleName: results.data.results[this.state.styleIndex].name,
               finishedLoading: true
             })
-            // console.log('results', results.data.results);
-            // console.log(this.state.currentStyles);
-            // console.log(this.state.currentThumbs);
-            // console.log(this.state.currentPhotos);
-            // console.log(this.state.currentProduct);
           });
       })
       .catch((err) => {
@@ -128,13 +117,13 @@ class App extends React.Component {
               handleUpdateMainAppState={this.handleUpdateMainAppState} />
           </div>
           <div>
-            <Carousels productId={this.state.currentProductID} cardOnClick={this.cardOnClick} />
+            <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
           </div>
           <div>
-            <Questions productId={this.state.currentProductID} productName={this.state.currProductName} />
+            <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
           </div>
           <div>
-            <Review productId={'11001'}/>
+            <Review productId={this.state.currentProduct.id} />
           </div>
         </div>
       );

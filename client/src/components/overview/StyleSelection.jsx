@@ -14,7 +14,7 @@ class StyleSelection extends React.Component {
   }
 
   handleChangeStyleClick(style_id, index) {
-    console.log('this was clicked', this.props);
+    //console.log('this was clicked', this.props);
     this.props.handleUpdateMainAppState({ styleIndex: index })
   }
 

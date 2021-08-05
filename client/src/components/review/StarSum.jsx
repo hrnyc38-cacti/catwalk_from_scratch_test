@@ -3,7 +3,7 @@ import { BsStarFill } from 'react-icons/bs';
 import { BsStar } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 
-function StarSum ({ratings}) {
+function StarSum({ ratings }) {
   let star = [];
   let count = [];
   for (var k in ratings) {
@@ -17,12 +17,12 @@ function StarSum ({ratings}) {
     divider += count[i];
   }
   const averageStar = (sum / divider).toFixed(1);
-  console.log('average star ', averageStar);
+  //console.log('average star ', averageStar);
 
   const getStars = (num) => {
-    console.log('NOW in getstars');
+    //console.log('NOW in getstars');
     let j = 0;
-    let filledStars = [...Array(num)].map(()=> {
+    let filledStars = [...Array(num)].map(() => {
       return <BsStarFill key={j++} />
     })
     //let n = 5 - j
