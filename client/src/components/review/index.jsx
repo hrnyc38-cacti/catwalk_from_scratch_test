@@ -31,6 +31,9 @@ class Review extends React.Component {
         this.setState({ meta: result.data });
         //console.log('THIS IS meta', this.state.meta);
       })
+      .then(()=> {
+        this.props.passRatings(this.state.meta.ratings);
+      })
       .catch((err) => {
         console.log(err);
       })
