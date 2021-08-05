@@ -275,6 +275,9 @@ h1, h2, h3, h4, h5, h6 {
   background-color: darkgray;
   position: relative;
 }
+.imageButton:hover {
+  transform: scale(1.5);
+}
 
 .singleCard {
   height: 290px;
@@ -296,4 +299,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   color:white;
   background-color: lightgray;
+}
+.addingOutfit {
+  color: black;
+}
+.addingOutfit:hover{
+  color:red;
 }

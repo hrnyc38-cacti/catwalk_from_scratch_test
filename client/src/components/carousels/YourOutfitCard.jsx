@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 import { TOKEN } from './../../config.js';
-import { FaRegStar } from "react-icons/fa";
+import { FaRegTimesCircle } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";
 
 class YourOutfitCard extends React.Component {
@@ -95,7 +95,7 @@ class YourOutfitCard extends React.Component {
       <div className='singleCard' onClick={(e) => this.eventHandler(e.target.classList[0])}>
         <div className='imageContainer'>
           <img className='cardImage' src={this.state.cardData.url}></img>
-          <FaRegStar className='imageButton' />
+          <FaRegTimesCircle className='imageButton addingOutfit' />
         </div>
         <div>
           <p className='ProductInfo'>{this.state.cardData.category}</p>
