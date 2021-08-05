@@ -55,7 +55,7 @@ function CharBar({title, content}) {
       Quality: ['Poor', 'OK', 'Perfect']
     };
 
-  console.log('TITLE ', labelDict[title][0]);
+  //console.log('TITLE ', labelDict[title][0]);
   if (!title) {
     return (
       <div>Loading...</div>

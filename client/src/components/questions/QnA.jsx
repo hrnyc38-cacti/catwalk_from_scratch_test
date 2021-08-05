@@ -46,13 +46,15 @@ class QnA extends React.Component {
       <li>
         <div>
           <strong>Q: {this.props.question.question_body}</strong>
-          <span>Helpful? <button className="text-bttn" onClick={this.handleHelpful.bind(this)}>Yes {`(${this.state.counter})`}</button></span>
-          <span>
-             | <button className="text-bttn" onClick={this.handleShowModal.bind(this)}>Add Answer</button>
-               <AnsModal show={this.state.showModal} onClose={this.handleHideModal.bind(this)} question={this.props.question} productName={this.props.productName}/>
+          <span className="help-panel">
+            <span>Helpful? <button className="text-bttn" onClick={this.handleHelpful.bind(this)}>Yes {`(${this.state.counter})`}</button></span>
+            <span>
+              | <button className="text-bttn" onClick={this.handleShowModal.bind(this)}>Add Answer</button>
+                <AnsModal show={this.state.showModal} onClose={this.handleHideModal.bind(this)} question={this.props.question} productName={this.props.productName}/>
+            </span>
           </span>
         </div>
-        <div>A: <Answers answers={this.props.question.answers}/></div>
+        <div>A: <Answers answers={this.props.question.answers}/></div><br/>
       </li>
     )
   }

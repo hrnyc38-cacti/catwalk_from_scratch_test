@@ -48,6 +48,7 @@ class Answer extends React.Component {
     return (
       <li>
         <div>{this.props.answer.body}</div>
+        <div>{this.props.answer.photos.length === 0? null : this.props.answer.photos.map((photo, i) => {return <img key={i} src={photo} />})}</div>
         <div>
           <span>by {this.props.answer.answerer_name}, {formattedDate}</span>
           <span> | Helpful? <button className="text-bttn" onClick={this.handleHelpful.bind(this)}>Yes {`(${this.state.count})`}</button></span>

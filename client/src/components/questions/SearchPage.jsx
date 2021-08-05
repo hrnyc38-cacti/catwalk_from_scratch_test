@@ -3,8 +3,9 @@ import Search4answer from './Search4answer.jsx';
 import QandAList from './QandAList.jsx';
 
 function SearchPage ({questions, productId, productName}) {
+  console.log('new Qs in search page ', questions);
   const [input, setInput] = useState('');
-  const [qList, setqList] = useState(questions);
+  const [qList, setqList] = useState([]);
 
   const updateInput = (input) => {
     if (input.length < 3) {
@@ -13,11 +14,15 @@ function SearchPage ({questions, productId, productName}) {
       var filtered = questions.filter((question) => {
         return question.question_body.toLowerCase().includes(input.toLowerCase())
       })
-      console.log('THIS IS FILTERED ', filtered);
+      //console.log('THIS IS FILTERED ', filtered);
       setInput(input);
       setqList(filtered);
     }
   };
+
+  useEffect(() => {
+    setqList(questions);
+  }, [questions]);
 
   return (
     <div>

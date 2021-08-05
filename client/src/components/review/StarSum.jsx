@@ -17,10 +17,10 @@ function StarSum ({ratings}) {
     divider += count[i];
   }
   const averageStar = (sum / divider).toFixed(1);
-  console.log('average star ', averageStar);
+  //console.log('average star ', averageStar);
 
   const getStars = (num) => {
-    console.log('NOW in getstars');
+    //console.log('NOW in getstars');
     let deciPart = num - Math.floor(num);
     num = Math.floor(num);
     let outlineCount = 5 - num;
