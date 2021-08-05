@@ -1,10 +1,4 @@
- .related-products-view {
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-  overflow: hidden;
 
-}
 .product{
   display: grid;
   width: 100%;
@@ -12,25 +6,6 @@
   margin: 0 20px;
 }
 
-.imageContainer {
-  height: 210px;
-  width: 100%;
-  background-color: darkgray;
-  position: relative;
-}
-
-.singleCard {
-  height: 290px;
-  width: 190px;
-  border-style: solid;
-  border-color: darkgrey;
-  border-width: thin;
-}
-
-.cardImage {
-  height: 100%;
-  width: 100%;
-}
 
 
 /*VVVVVVVV********* PARENT OVERVIEW PAGE *****VVVVVVVVV*********/
@@ -265,23 +240,56 @@
 #style-text {
   margin-bottom: 15px;
 }
-.imageButton {
-  position:absolute;
-  top: 5px;
-  right: 5px;
-  color:yellow;
-}
+
 /*-----------END--CHILD OF OVERVIEW Style Selection----------*/
-
-
-
-
-
-
-
 
 /*-----------    ----------*/
 h1, h2, h3, h4, h5, h6 {
   margin: 5px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RELATED PRODUCT CSS */
+
+.imageButton {
+  position:absolute;
+  top: 5px;
+  right: 5px;
+  color:yellow;
+}
+.imageContainer {
+  height: 210px;
+  width: 100%;
+  background-color: darkgray;
+  position: relative;
+}
+
+.singleCard {
+  height: 290px;
+  width: 190px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: thin;
+}
+
+.cardImage {
+  height: 100%;
+  width: 100%;
+}
+
+.ProductInfo{
+  margin: 0;
+  padding: 0;
+}
