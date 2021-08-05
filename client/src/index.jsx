@@ -51,9 +51,7 @@ class App extends React.Component {
     }
   }
   cardOnClick = (e) => {
-    console.log('The sent item: ', e);
     this.setState({ currentProductID: e });
-    console.log('The state after updating: ', this.state.currentProductID)
   }
 
   getProductsByPage(page) {

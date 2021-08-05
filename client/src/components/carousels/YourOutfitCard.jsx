@@ -5,7 +5,7 @@ import { TOKEN } from './../../config.js';
 import { FaRegStar } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";
 
-class Card extends React.Component {
+class YourOutfitCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +13,7 @@ class Card extends React.Component {
       cardData: ''
     };
     this.eventHandler = this.eventHandler.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
@@ -67,20 +68,25 @@ class Card extends React.Component {
     }
 
   }
+  componentDidUpdate(previousProps, previousState, snapShot) {
+    if (previousState.productId !== this.props.productID) {
+      this.setState({productId: this.props.productID});
+      // this.componentDidMount();
+      console.log();
+    }
+  }
   eventHandler(e) {
-    console.log(e);
-    if (e === 'imageButton') {
-      console.log('related button');
-    } else if (e === 'outfitImage') {
-
+    if (e === 'outfitImage') {
+      console.log(this.props);
+      (e) => this.props.handleClick();
     } else {
-      this.props.cardOnClick(this.state.cardData.id);
+      // this.props.cardOnClick(this.state.cardData.id);
     }
   }
   render() {
-    if (!this.state.productId) {
+    if (!this.props.productID) {
       return (
-        <div className='singleCard  outfitCard' onClick={(e) => this.eventHandler(e.target.classList[0])}>
+        <div className='singleCard  outfitCard' onClick={(e) => this.props.handleClick()}>
           <FaPlusCircle  className='outfitImage'/>
         </div>
       );
@@ -107,4 +113,4 @@ class Card extends React.Component {
     );
   }
 };
-export default Card;
+export default YourOutfitCard;

@@ -3,7 +3,7 @@ import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 import { TOKEN } from './../../config.js';
 import { FaRegStar } from "react-icons/fa";
-
+import { FaPlusCircle } from "react-icons/fa";
 
 class RelatedProductCard extends React.Component {
   constructor(props) {
@@ -12,9 +12,10 @@ class RelatedProductCard extends React.Component {
       productId: this.props.productID,
       cardData: ''
     };
+    this.eventHandler = this.eventHandler.bind(this);
   }
-
   componentDidMount() {
+    if (this.state.productId) {
     let options = {
       type: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productID}`,
@@ -39,7 +40,6 @@ class RelatedProductCard extends React.Component {
           .then((res) => {
             buildItem.url = res.data.results[0].photos[0].url;
             options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/`;
-
             axios(options)
               .then((res) => {
                 var rating = 0;
@@ -47,13 +47,13 @@ class RelatedProductCard extends React.Component {
                 for (var x = 0; x < res.data.results.length; x++) {
                   rating += res.data.results[x].rating;
                 }
+
                 buildItem.rating = rating / res.data.results.length;
                 this.setState({ cardData: buildItem });
               })
               .catch((err) => {
                 console.log(err);
               })
-
           })
           .catch((err) => {
             console.log(err);
@@ -62,11 +62,18 @@ class RelatedProductCard extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-
+    }
+  }
+  eventHandler(e) {
+    if (e === 'imageButton') {
+      console.log('related button');
+    } else {
+      this.props.cardOnClick(this.state.cardData.id);
+    }
   }
   render() {
     return (
-      <div className='singleCard' onClick={(e) => this.props.cardOnClick(this.state.cardData.id)}>
+      <div className='singleCard' onClick={(e) => this.eventHandler(e.target.classList[0])}>
         <div className='imageContainer'>
           <img className='cardImage' src={this.state.cardData.url}></img>
           <FaRegStar className='imageButton' />
