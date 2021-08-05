@@ -9,6 +9,7 @@ function CharBar({title, content}) {
   }
   var value = content.value;
 
+
   const testValue1 = (number) => {
     if (number < 1.67) {
       let position = (number / 1.67).toFixed(2) * 100 + '%';

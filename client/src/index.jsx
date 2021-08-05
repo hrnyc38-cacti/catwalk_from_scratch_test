@@ -30,7 +30,8 @@ class App extends React.Component {
       currentCategory: '',
       photoIndex: 0,
       styleIndex: 0,
-      styleName: ''
+      styleName: '',
+      ratings: null
     }
     this.cardOnClick = this.cardOnClick.bind();
     this.handleUpdateMainAppState = this.handleUpdateMainAppState.bind(this);
@@ -107,13 +108,18 @@ class App extends React.Component {
       })
   }
 
+  passRatings(rating) {
+    this.setState({ratings: rating});
+    console.log('RATINGS IN MAIN PAGE ', this.state.ratings);
+  }
+
 
   render() {
     if (this.state.finishedLoading) {
       return (
         <div>
           <div>
-            {/* <Overview
+            <Overview
               currentProduct={this.state.currentProduct}
               product_id={this.state.product_id}
               currentCategory={this.state.currentProduct.category}
@@ -124,7 +130,8 @@ class App extends React.Component {
               photoIndex={this.state.photoIndex}
               styleIndex={this.state.styleIndex}
               styleName={this.state.styleName}
-              handleUpdateMainAppState={this.handleUpdateMainAppState} /> */}
+              handleUpdateMainAppState={this.handleUpdateMainAppState}
+              ratings={this.state.ratings} />
           </div>
           <div>
             <Carousels productId={this.state.currentProductID} cardOnClick={this.cardOnClick} />
@@ -133,7 +140,7 @@ class App extends React.Component {
             <Questions productId={this.state.currentProductID} productName={this.state.currProductName} />
           </div>
           <div>
-            <Review productId={this.state.currentProductID}/>
+            <Review productId={this.state.currentProductID} passRatings={this.passRatings.bind(this)}/>
           </div>
         </div>
       );
