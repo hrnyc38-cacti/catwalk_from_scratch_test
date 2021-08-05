@@ -8,20 +8,11 @@ class RelatedCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: this.props.productId,
       relatedDataID: []
     };
-    this.getRelatedProducts = this.getRelatedProducts.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
-    this.getRelatedProducts();
-  }
-  componentDidUpdate(previousProps, previousState, snapShot) {
-    if(previousProps !== this.props) {
-      this.getRelatedProducts();
-    }
-  }
-  getRelatedProducts () {
     let options = {
       type: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productId}/related`,
@@ -29,7 +20,6 @@ class RelatedCarousel extends React.Component {
         Authorization: TOKEN
       }
     };
-
     axios(options)
       .then((res) => {
         this.setState({ relatedDataID: res.data });
@@ -38,6 +28,11 @@ class RelatedCarousel extends React.Component {
         console.log(err);
       });
   }
+  componentDidUpdate(previousProps, previousState, snapShot) {
+    if (previousProps.productId !== this.props.productId) {
+      this.componentDidMount();
+    }
+  }
   render() {
     var breakPoints = [
       { width: 1, itemsToShow: 1 },
@@ -45,21 +40,18 @@ class RelatedCarousel extends React.Component {
       { width: 768, itemsToShow: 3 },
       { width: 1200, itemsToShow: 4 }
     ];
-    console.log(this.state.relatedDataID)
     return (
       <div>
         <h3>RELATED PRODUCTS</h3>
         <Carousel breakPoints={breakPoints} >
           {this.state.relatedDataID.map(product => {
             return (
-              <RelatedProductCard key={product} productID={product} cardOnClick={this.props.cardOnClick}/>
+              <RelatedProductCard key={product} productID={product} cardOnClick={this.props.cardOnClick} />
             );
           })}
         </Carousel >
-
       </div>
     );
   }
 };
-
 export default RelatedCarousel;

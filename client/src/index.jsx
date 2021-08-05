@@ -59,6 +59,9 @@ class App extends React.Component {
       console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
     }
   }
+  cardOnClick = (e) => {
+    this.setState({ currentProductID: e });
+  }
 
   getProductsByPage(page) {
     let options = {
