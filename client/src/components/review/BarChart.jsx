@@ -9,7 +9,7 @@ function BarChart({ratings}) {
   }
 
   const max = Math.max.apply(null, datapt);
-  console.log('datapt ', datapt);
+  //console.log('datapt ', datapt);
 
   return (
     <table>

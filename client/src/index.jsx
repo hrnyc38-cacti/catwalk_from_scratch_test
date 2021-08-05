@@ -45,15 +45,18 @@ class App extends React.Component {
   componentDidMount() {
     this.getProductsByPage(1);
   }
+  cardOnClick = (e) => {
+    console.log('The sent item: ', e);
+    let newID = e;
+    console.log('The state before update: ', this.state.currentProductID);
+    this.setState({ currentProductID: newID });
+    console.log('The state after updating: ', this.state.currentProductID)
+  }
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
+      console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
     }
-  }
-  cardOnClick = (e) => {
-    console.log('The sent item: ', e);
-    this.setState({ currentProductID: e });
-    console.log('The state after updating: ', this.state.currentProductID)
   }
 
   getProductsByPage(page) {
@@ -96,11 +99,7 @@ class App extends React.Component {
               styleName: results.data.results[this.state.styleIndex].name,
               finishedLoading: true
             })
-            // console.log('results', results.data.results);
-            // console.log(this.state.currentStyles);
-            // console.log(this.state.currentThumbs);
-            // console.log(this.state.currentPhotos);
-            // console.log(this.state.currentProduct);
+
           });
       })
       .catch((err) => {
@@ -114,7 +113,7 @@ class App extends React.Component {
       return (
         <div>
           <div>
-            <Overview
+            {/* <Overview
               currentProduct={this.state.currentProduct}
               product_id={this.state.product_id}
               currentCategory={this.state.currentProduct.category}
@@ -125,7 +124,7 @@ class App extends React.Component {
               photoIndex={this.state.photoIndex}
               styleIndex={this.state.styleIndex}
               styleName={this.state.styleName}
-              handleUpdateMainAppState={this.handleUpdateMainAppState} />
+              handleUpdateMainAppState={this.handleUpdateMainAppState} /> */}
           </div>
           <div>
             <Carousels productId={this.state.currentProductID} cardOnClick={this.cardOnClick} />
@@ -134,7 +133,7 @@ class App extends React.Component {
             <Questions productId={this.state.currentProductID} productName={this.state.currProductName} />
           </div>
           <div>
-            <Review productId={'11001'}/>
+            <Review productId={this.state.currentProductID}/>
           </div>
         </div>
       );
