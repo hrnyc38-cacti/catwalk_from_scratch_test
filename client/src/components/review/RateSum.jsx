@@ -4,7 +4,7 @@ import StarSum from './StarSum.jsx';
 import CharBars from './CharBars.jsx';
 
 function RateSum ({ meta }) {
-  console.log('RATINGS ', meta.ratings);
+  //console.log('RATINGS ', meta.ratings);
   let recommend = parseInt(meta.recommended.true);
   let noRecommend = parseInt(meta.recommended.false);
   let rate = (recommend / (recommend + noRecommend)).toFixed(2) * 100 + '%';

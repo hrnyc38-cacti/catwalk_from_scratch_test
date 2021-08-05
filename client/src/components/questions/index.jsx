@@ -11,6 +11,7 @@ class Questions extends React.Component {
     this.state = {
       questions: {}
     }
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   componentDidMount() {
@@ -20,16 +21,24 @@ class Questions extends React.Component {
       .then((results) => {
         //console.log(results);
         this.setState({ questions: results.data })
-        console.log('THIS IS STATE', this.state.questions)
+        //console.log('THIS IS STATE', this.state.questions)
       })
       .catch((err) => {
         console.log(err);
       })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Previous props ', prevProps);
+    if (prevProps.productId !== this.props.productId) {
+      console.log('id props has changed.');
+      this.componentDidMount();
+    }
+  }
+
 
   render() {
-    console.log('THIS IS STATE.result ', this.state.questions.results);
+    console.log('THIS IS New STATE.productId ', this.props.productId);
     let isloaded = !!this.state.questions.results;
     if (!isloaded) {
       return (
