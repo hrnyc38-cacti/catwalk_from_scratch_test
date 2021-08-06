@@ -90,3 +90,20 @@
   margin: 2px 1px;
   font-weight: bold;
 }
+
+.left-tag {
+  display: block;
+  text-align: left;
+}
+.middle-tag {
+  display: block;
+  text-align: center;
+}
+.right-tag {
+  display: block;
+  text-align: right;
+}
+
+.section-head {
+  font-family: 'Montserrat', sans-serif;
+}
