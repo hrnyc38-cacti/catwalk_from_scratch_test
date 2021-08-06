@@ -60,7 +60,7 @@ class App extends React.Component {
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
-      //this.getProductByID(this.state.currentProductID);
+      this.getProductByID(this.state.currentProductID);
       console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
       console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
     }
@@ -115,12 +115,14 @@ class App extends React.Component {
             for (let i = 2; i <= quantityAvailable; i++) {
               currentQuantitiesArray.push(i);
             }
-            // for (let i = 0; i < currentFavorites.length; i++) {
-            //   if (sku === currentFavorites[i].sku) {
-            //     isFavorite = true;
-            //     break;
-            //   }
-            // }
+
+            for (let i = 0; i < this.state.currentFavorites.length; i++) {
+              console.log('THIS IS SKU!!!!!!!!!!!!!', sku);
+              if (sku === currentFavorites[i].sku) {
+                isFavorite = true;
+                break;
+              }
+            }
 
             this.setState({
               currentStyleID: results.data.results[0].style_id,
@@ -180,6 +182,7 @@ class App extends React.Component {
               selectedQuantity={this.state.selectedQuantity}
               ratings={this.state.ratings} />
           </div>
+          <h3 className="slogan" >"{this.state.currentProduct.slogan}"</h3>
           <div>
             <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
           </div>

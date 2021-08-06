@@ -42,6 +42,15 @@ class ProductSelectors extends React.Component {
 
   handleToggleAddToFavoritesClick(e) {
     let oldFavs = this.props.currentFavorites;
+    if (this.props.currentItemInFavorites) {
+      for (var i = 0; i < oldFavs.length; i++) {
+        if (oldFavs[i].sku === this.props.currentSKU) {
+          oldFavs.splice(i, 1);
+          this.props.handleUpdateMainAppState({ currentFavorites: oldFavs, currentItemInFavorites: false })
+          return;
+        }
+      }
+    }
     let itemToBeAddedToFavs = {
       name: this.props.currentProduct.name,
       currentProduct: this.props.currentProduct,
@@ -56,8 +65,8 @@ class ProductSelectors extends React.Component {
     }
     let itemAlreadyInFavs = false;
     let timesToIterate = oldFavs.length
-    for (let i = 0; i < timesToIterate; i++) {
-      if (oldBag.length === 0) {
+    for (let i = 0; i <= timesToIterate; i++) {
+      if (oldFavs.length === 0) {
         oldFavs.push(itemToBeAddedToFavs);
         itemAlreadyInFavs = true;
         break;
@@ -76,6 +85,7 @@ class ProductSelectors extends React.Component {
   }
 
   handleAddToBagClick(e) {
+    //this.props.handleUpdateMainAppState({ currentProductID: '11007' })
     let oldBag = this.props.addToBag;
     let itemToBeAddedToBag = {
       name: this.props.currentProduct.name,
@@ -110,11 +120,11 @@ class ProductSelectors extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.currentStyles);
+
   }
 
   checkFavoritesForWhichToRender() {
-    if (!itemAlreadyInFavs) {
+    if (!this.props.currentItemInFavorites) {
       return (<AiOutlineStar className="favs-star-unchecked" onClick={(e) => this.handleToggleAddToFavoritesClick(e)} />)
     } else {
       return (<AiFillStar className="favs-star-unchecked" onClick={(e) => this.handleToggleAddToFavoritesClick(e)} />)
@@ -122,14 +132,7 @@ class ProductSelectors extends React.Component {
   }
 
   render() {
-    let currentStyles = this.props.currentStyles;
-    let styleIndex = this.props.styleIndex;
-    let arrayOfSKUS = [];
-    // for (let key in currentStyles[styleIndex].skus) {
-    //   arrayOfSKUS.push(currentStyles[styleIndex].skus.[key])
-    // }
-    //console.log('arrayOfSKUS', arrayOfSKUS);
-    //console.log('next', this.props.currentStyles);
+
     return (
       <div className="product-selectors">
         <div className="size-and-quantity-div">
@@ -159,7 +162,7 @@ class ProductSelectors extends React.Component {
             <button className="add-to-bag-button" onClick={(e) => { this.handleAddToBagClick(e) }}>ADD TO BAG +</button>
           </div>
           <div className="div-star">
-            {/* {this.checkFavoritesForWhichToRender()} */}
+            {this.checkFavoritesForWhichToRender()}
           </div>
 
         </div>
