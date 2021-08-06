@@ -443,3 +443,14 @@ h1, h2, h3, h4, h5, h6 {
 .addingOutfit:hover{
   color:red;
 }
+.modalAlan{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
