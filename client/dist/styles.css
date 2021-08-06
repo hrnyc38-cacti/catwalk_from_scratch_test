@@ -483,3 +483,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 400px;
   background-color: white;
 }
+.topnav {
+  width: 100%;
+  background-color: black;
+  height: 50px;
+}
+.topnav h1 {
+  /* height: 500px; */
+  text-align: center;
+  color: white;
+}
