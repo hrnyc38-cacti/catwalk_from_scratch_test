@@ -1,18 +1,21 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { FaExpandArrowsAlt, FaArrowCircleRight, FaArrowCircleLeft } from 'react-icons/fa';
-
+import ImagePopUp from './ImagePopUp.jsx';
 
 class MainImageCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhotos: []
+      currentPhotos: [],
+      showPopup: false
     };
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
     this.handleExpandButtonClick = this.handleExpandButtonClick.bind(this);
     this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
+    // this.handleShowPopup = this.handleShowPopup.bind(this);
+    // this.handleHidePopup = this.handleHidePopup.bind(this);
   }
 
   componentDidUpdate() {
@@ -54,9 +57,20 @@ class MainImageCarousel extends React.Component {
     this.props.handleUpdateMainAppState(newState);
   }
 
-  handleExpandButtonClick() {
-    let newState = {};
-    this.props.handleUpdateMainAppState(newState);
+  // handleExpandButtonClick() {
+  //   let newState = {};
+  //   this.props.handleUpdateMainAppState(newState);
+  // }
+  handleShowPopup (e) {
+    console.log('button was clicked!');
+    this.setState({
+      showPopup: true
+    })
+  }
+  handleHidePopup () {
+    this.setState({
+      showPopup: false
+    })
   }
 
 
@@ -75,8 +89,9 @@ class MainImageCarousel extends React.Component {
         </div>
         <div className="current-photo">
           <img className="this-image" src={photoURL} />
+          {/* <ImagePopUp src={photoURL} show={this.state.showPopup} onClose={this.handleHidePopup}/> */}
         </div>
-        <FaExpandArrowsAlt className="expand" onClick={() => this.handleExpandButtonClick()} />
+        {/* <FaExpandArrowsAlt className="expand" onClick={(e)=>this.handleShowPopup} /> */}
         <FaArrowCircleRight className="next-button" onClick={() => this.handleNextButtonClick()} />
         <FaArrowCircleLeft className="prev-button" onClick={() => this.handlePreviousButtonClick()} />
       </div >

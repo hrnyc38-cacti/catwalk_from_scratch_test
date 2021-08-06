@@ -61,16 +61,10 @@ class App extends React.Component {
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
-<<<<<<< HEAD
-      this.getProductByID(this.state.currentProductID);
-      console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
-      console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
-=======
       this.componentDidMount();
       // //this.getProductByID(this.state.currentProductID);
       // console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
       // console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
->>>>>>> 30bc4bd6f9c00c9fb0c97948f2391992f9b69f85
     }
   }
 
