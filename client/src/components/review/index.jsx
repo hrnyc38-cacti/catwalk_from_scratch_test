@@ -56,8 +56,9 @@ class Review extends React.Component {
       //console.log('meta ', this.state.meta);
       return (
         <div>
-          <h5>RATINGS & REVIEWS</h5>
+          <h5 className="section-head">RATINGS & REVIEWS</h5>
           <RateSum meta={this.state.meta} />
+          <br/>
         </div>
       )
     }

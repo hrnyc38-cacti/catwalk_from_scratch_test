@@ -48,12 +48,9 @@ class Questions extends React.Component {
     } else {
       return (
         <div>
-          <h5>QUESTIONS & ANSWERS</h5>
+          <h5 className="section-head">QUESTIONS & ANSWERS</h5>
           <SearchPage questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName} />
-          {/* <QandAList questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName} /> */}
-
-          {/* <button>MORE ANSWERED QUESTIONS</button> */}
-          {/* <button>ADD A QUESTION +</button> */}
+          <br/>
         </div>
       )
     }

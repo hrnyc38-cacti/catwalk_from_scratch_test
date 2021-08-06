@@ -6,6 +6,16 @@
   margin: 0 20px;
 }
 
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom right, rgba(201, 205, 206, 0.829), rgb(232, 232, 238));
+}
+
+.title-at-top {
+  text-align: center;
+}
+
 
 
 /*VVVVVVVV********* PARENT OVERVIEW PAGE *****VVVVVVVVV*********/
@@ -13,7 +23,7 @@
   margin-left: 70px;
   margin-right: 70px;
   margin-top: 20px;
-  margin-bottom: 20px;;
+  margin-bottom: 30px;;
   /* max-width: 100%; */
   overflow: hidden;
   max-height: 500px;
@@ -76,9 +86,7 @@
   /* border: solid 1px;
   border-color: black; */
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-image: linear-gradient(to bottom right, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
 }
 
 .current-photo {
@@ -179,8 +187,10 @@
   /* padding: 5px; */
   /* height: 100%;
   width: 100%; */
-  border: solid 1px;
-  border-color: black;
+  /* border: solid 1px;
+  border-color: black; */
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to top left, rgba(75, 70, 72, 0.096), rgb(182, 182, 189));
   /* height: 100px; */
 }
 
@@ -202,10 +212,12 @@
 /*-----------CHILD OF OVERVIEW Product Selectors----------*/
 .product-selectors {
   margin: 5px;
-  border: solid 1px;
-  border-color: black;
+  /* border: solid 1px;
+  border-color: black; */
   display: grid;
   grid-template-rows: 1fr 1fr;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
   /* grid-template-columns: 1fr 1fr; */
 }
 
@@ -293,14 +305,16 @@
 /*-----------CHILD OF OVERVIEW Style Selection----------*/
 .styles-section {
   margin: 5px;
-  border: solid 1px;
-  border-color: black;
+  /* border: solid 1px;
+  border-color: black; */
   /* display: flex; */
   /* flex-direction: column; */
   display: grid;
   /* height: 200px;
   width: 200px; */
-  grid-template-rows: 1fr 5fr;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  grid-template-rows: 1fr 7fr;
   /* overflow:hidden; */
 }
 
@@ -339,8 +353,10 @@
 }
 
 #style-text {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
+  height: 10px;
 }
+
 
 /*-----------END--CHILD OF OVERVIEW Style Selection----------*/
 
