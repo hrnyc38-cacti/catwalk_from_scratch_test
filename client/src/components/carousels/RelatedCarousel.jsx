@@ -48,7 +48,6 @@ class RelatedCarousel extends React.Component {
       { width: 768, itemsToShow: 3 },
       { width: 1200, itemsToShow: 4 }
     ];
-    //console.log(this.state.relatedDataID)
     return (
       <div>
         <h3>RELATED PRODUCTS</h3>
