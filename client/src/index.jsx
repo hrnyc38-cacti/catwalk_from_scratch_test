@@ -12,11 +12,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      currentProductID: '11004',
       currentProduct: {},
-      cart: [],
+      addToBag: [],
       finishedLoading: false,
-      currentProduct: {},
       currentPhotos: [],
       currentStyles: [],
       currentThumbs: [],
@@ -32,6 +31,7 @@ class App extends React.Component {
       currentStyleID: '',
       selectedSize: 'M',
       selectedQuantity: 1,
+      currentItemInFavorites: false,
       ratings: null
     }
     this.cardOnClick = this.cardOnClick.bind();
@@ -39,13 +39,16 @@ class App extends React.Component {
   }
 
   handleUpdateMainAppState(newState) {
-    //console.log('I made it back up', newState)
+    console.log('I made it back up', newState);
+    console.log(this.state.currentSKU);
     this.setState(newState);
+    console.log(this.state.currentSKU);
   }
 
   componentDidMount() {
-    this.getProductsByPage(1);
+    this.getProductByID(this.state.currentProductID);
   }
+
   cardOnClick = (e) => {
     console.log('The sent item: ', e);
     let newID = e;
@@ -53,20 +56,24 @@ class App extends React.Component {
     this.setState({ currentProductID: newID });
     console.log('The state after updating: ', this.state.currentProductID)
   }
+
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
+      this.getProductByID(this.state.currentProductID);
+      console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
       console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
     }
   }
+
   cardOnClick = (e) => {
     this.setState({ currentProductID: e });
   }
 
-  getProductsByPage(page) {
+  getProductByID(ID) {
     let options = {
-      type: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/?page=${page}`,
+      type: 'GET',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${ID}`,
       headers: {
         'Authorization': TOKEN
       }
@@ -75,7 +82,7 @@ class App extends React.Component {
       .then((res) => {
         let options2 = {
           type: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${res.data[0].id}/styles`,
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${ID}/styles`,
           headers: {
             'Authorization': TOKEN
           }
@@ -96,29 +103,43 @@ class App extends React.Component {
             let currentSizesArray = [];
             let quantityAvailable = 1;
             let currentQuantitiesArray = [];
+            let sku;
+            let isFavorite = false;
             for (let key in sizeData) {
               currentSizesArray.push(sizeData[key].size);
               if (sizeData[key].size === 'M') {
                 quantityAvailable = sizeData[key].quantity
+                sku = key;
               }
             }
             for (let i = 2; i <= quantityAvailable; i++) {
               currentQuantitiesArray.push(i);
             }
 
+            for (let i = 0; i < this.state.currentFavorites.length; i++) {
+              console.log('THIS IS SKU!!!!!!!!!!!!!', sku);
+              if (sku === currentFavorites[i].sku) {
+                isFavorite = true;
+                break;
+              }
+            }
+
             this.setState({
-              products: res.data,
-              currentProduct: res.data[0],
+              currentStyleID: results.data.results[0].style_id,
+              currentProduct: res.data,
               currentStyles: results.data.results,
               currentPhotos: currentPhotosArray,
-              currentCategory: res.data[0].category.toUpperCase(),
+              currentCategory: res.data.category.toUpperCase(),
               currentThumbs: currentThumbsArray,
               styleName: results.data.results[this.state.styleIndex].name,
               mainImage: photoData[this.state.photoIndex].url,
               currentSizesAvailable: currentSizesArray,
               currentQuantitiesAvailable: currentQuantitiesArray,
+              currentItemInFavorites: isFavorite,
+              currentSKU: sku,
               finishedLoading: true
             })
+            console.log('[[[[[[[[[This is state}}}}}}}', this.state)
           });
 
       })
@@ -140,8 +161,9 @@ class App extends React.Component {
           <div>
             <Overview
               currentProduct={this.state.currentProduct}
-              product_id={this.state.product_id}
+              currentProductID={this.state.currentProductID}
               currentCategory={this.state.currentProduct.category}
+              addToBag={this.state.addToBag}
               currentPhotos={this.state.currentPhotos}
               currentStyles={this.state.currentStyles}
               currentThumbs={this.state.currentThumbs}
@@ -153,12 +175,14 @@ class App extends React.Component {
               handleUpdateMainAppState={this.handleUpdateMainAppState}
               currentSizesAvailable={this.state.currentSizesAvailable}
               currentQuantitiesAvailable={this.state.currentQuantitiesAvailable}
+              currentItemInFavorites={this.state.currentItemInFavorites}
               currentSKU={this.state.currentSKU}
               currentStyleID={this.state.currentStyleID}
               selectedSize={this.state.selectedSize}
               selectedQuantity={this.state.selectedQuantity}
               ratings={this.state.ratings} />
           </div>
+          <h3 className="slogan" >"{this.state.currentProduct.slogan}"</h3>
           <div>
             <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
           </div>

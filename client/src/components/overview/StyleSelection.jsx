@@ -14,7 +14,13 @@ class StyleSelection extends React.Component {
   }
 
   handleChangeStyleClick(style_id, index) {
-    //console.log('this was clicked', this.props);
+    let reset = function (element) {
+      let selectedButton = document.getElementsByClassName(element);
+      selectedButton[0].selectedIndex = 0;
+      console.log(selectedButton);
+    }
+    reset('size-selector');
+    reset('quantity-selector');
     let photoData = this.props.currentStyles[index].photos;
     let currentPhotosArray = [];
     let currentThumbsArray = [];
@@ -22,7 +28,27 @@ class StyleSelection extends React.Component {
       currentPhotosArray.push(photoData[i].url);
       currentThumbsArray.push(photoData[i].thumbnail_url);
     }
+    let sizeData = this.props.currentStyles[index].skus;
+    let sku;
+    let quantityAvailable = 1;
+    let currentQuantitiesArray = [];
+    let currentSizesArray = [];
+    for (let key in sizeData) {
+      currentSizesArray.push(sizeData[key].size);
+      if (sizeData[key].size === 'M') {
+        quantityAvailable = sizeData[key].quantity;
+        sku = key;
+      }
+    }
+    for (let i = 2; i <= quantityAvailable; i++) {
+      currentQuantitiesArray.push(i);
+    }
     let newState = {
+      currentQuantitiesAvailable: currentQuantitiesArray,
+      currentSizesAvailable: currentSizesArray,
+      currentStyleID: style_id,
+      selectedQuantity: 1,
+      selectedSize: 'M',
       currentThumbs: currentThumbsArray,
       currentPhotos: currentPhotosArray,
       styleIndex: index,

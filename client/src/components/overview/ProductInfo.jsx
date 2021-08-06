@@ -3,9 +3,7 @@ import { BsStarFill } from 'react-icons/bs';
 import { BsStar } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 
-function ProductInfo({ ratings, category, name, price }) {
-  //console.log('this is category', props.category);
-  console.log('HERE IN NICKS CO', ratings)
+function ProductInfo({ ratings, category, name, price, description }) {
   var getStars = (ratings) => {
     let star = [];
     let count = [];
@@ -48,9 +46,13 @@ function ProductInfo({ ratings, category, name, price }) {
     return (
       <div className="product-info">
         {/* <h5>insert stars and a link to reviews here</h5> */}
-        <span>{getStars(ratings)}</span>
-        <h5>{category}</h5>
+        <span className="stars-on-product-info">{getStars(ratings)}</span>
+        <span>
+          <a id="read-all-reviews" href="#reviews">Read All Reviews</a>
+        </span>
+        <h5 className="category-display">{category}</h5>
         <h1>{name}</h1>
+        <h5>"{description}"</h5>
         <h4>{price}</h4>
       </div>
     )

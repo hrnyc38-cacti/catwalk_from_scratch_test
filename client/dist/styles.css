@@ -6,6 +6,22 @@
   margin: 0 20px;
 }
 
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom right, rgba(201, 205, 206, 0.829), rgb(232, 232, 238));
+}
+
+.title-at-top {
+  text-align: center;
+}
+
+.slogan {
+  text-align: center;
+  margin-bottom: 30px;
+  /* margin-left: 1px; */
+}
+
 
 
 /*VVVVVVVV********* PARENT OVERVIEW PAGE *****VVVVVVVVV*********/
@@ -13,7 +29,6 @@
   margin-left: 70px;
   margin-right: 70px;
   margin-top: 20px;
-  margin-bottom: 20px;;
   /* max-width: 100%; */
   overflow: hidden;
   max-height: 500px;
@@ -76,9 +91,7 @@
   /* border: solid 1px;
   border-color: black; */
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  background-image: linear-gradient(to bottom right, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
 }
 
 .current-photo {
@@ -110,6 +123,7 @@
   /* max-height: 500px; */
   max-width: 100%;
   max-height: 150%;
+  box-shadow: 3px 3px 10px black;
   /* width:75% */
 
   /* object-fit: contain; */
@@ -120,10 +134,12 @@
 }
 
 .thumbs img{
-  margin-top: 1px;
-  padding: 10px;
+  margin: 10px;
+  /* padding: 10px; */
   height: 55px;
   width: auto;
+  z-index: 5;
+  box-shadow: 3px 3px 20px black;
 }
 
 .thumbs-slider {
@@ -137,6 +153,8 @@
 }
 
 .expand {
+  border-radius: 20%;
+  box-shadow: 1px 1px 20px white;
   height: 20px;
   width: auto;
   position: absolute; left: 95%; top: 4%;
@@ -146,7 +164,9 @@
 .next-button {
   /* height: 20px;
   width: auto; */
+  border-radius: 50%;
   position: absolute; left: 95%; top: 45%;
+  box-shadow: 1px 1px 20px white;
   /* float: right; */
   /* box-shadow: 1px 1px white; */
   transform: scale(1.5);
@@ -155,6 +175,8 @@
 .prev-button {
   /* height: 20px;
   width: auto; */
+  border-radius: 50%;
+  box-shadow: 1px 1px 20px white;
   position: absolute; left: 5%; top: 45%;
   float: left;
   transform: scale(1.5)
@@ -176,16 +198,26 @@
 .product-info {
   /* display:flex; */
   margin: 5px;
+  box-shadow: 0px 0px 4px black;
   /* padding: 5px; */
   /* height: 100%;
   width: 100%; */
-  border: solid 1px;
-  border-color: black;
+  /* border: solid 1px;
+  border-color: black; */
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to top left, rgba(75, 70, 72, 0.096), rgb(182, 182, 189));
   /* height: 100px; */
 }
 
+#read-all-reviews {
+  color: black;
+}
+
+.stars-on-product-info {
+  margin-right: 5px;
+}
+
 .category-display {
-  text-align: right;
   text-transform: uppercase;
 }
 
@@ -202,10 +234,13 @@
 /*-----------CHILD OF OVERVIEW Product Selectors----------*/
 .product-selectors {
   margin: 5px;
-  border: solid 1px;
-  border-color: black;
+  box-shadow: 0px 0px 4px black;
+  /* border: solid 1px;
+  border-color: black; */
   display: grid;
   grid-template-rows: 1fr 1fr;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
   /* grid-template-columns: 1fr 1fr; */
 }
 
@@ -293,14 +328,17 @@
 /*-----------CHILD OF OVERVIEW Style Selection----------*/
 .styles-section {
   margin: 5px;
-  border: solid 1px;
-  border-color: black;
+  /* border: solid 1px;
+  border-color: black; */
   /* display: flex; */
   /* flex-direction: column; */
   display: grid;
+  box-shadow: 0px 0px 4px black;
   /* height: 200px;
   width: 200px; */
-  grid-template-rows: 1fr 5fr;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  grid-template-rows: 1fr 7fr;
   /* overflow:hidden; */
 }
 
@@ -339,8 +377,10 @@
 }
 
 #style-text {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
+  height: 10px;
 }
+
 
 /*-----------END--CHILD OF OVERVIEW Style Selection----------*/
 
