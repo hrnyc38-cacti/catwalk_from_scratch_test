@@ -55,7 +55,6 @@ class MainImageCarousel extends React.Component {
   }
 
   handleExpandButtonClick() {
-    let newState = {};
     this.props.handleUpdateMainAppState(newState);
   }
 
