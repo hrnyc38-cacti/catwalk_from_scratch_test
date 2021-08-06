@@ -15,7 +15,6 @@ class YourOutfitCard extends React.Component {
     this.eventHandler = this.eventHandler.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
-
   componentDidMount() {
     if (this.state.productId) {
     let options = {
@@ -56,7 +55,6 @@ class YourOutfitCard extends React.Component {
               .catch((err) => {
                 console.log(err);
               })
-
           })
           .catch((err) => {
             console.log(err);
@@ -66,19 +64,16 @@ class YourOutfitCard extends React.Component {
         console.log(err);
       });
     }
-
   }
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.productId !== this.props.productID) {
       this.setState({productId: this.props.productID});
-      // this.componentDidMount();
-      console.log();
     }
   }
   eventHandler(e) {
     if (e === 'outfitImage') {
       console.log(this.props);
-      (e) => this.props.handleClick();
+      this.props.handleClick();
     } else {
       // this.props.cardOnClick(this.state.cardData.id);
     }
@@ -92,10 +87,10 @@ class YourOutfitCard extends React.Component {
       );
     }
     return (
-      <div className='singleCard' onClick={(e) => this.eventHandler(e.target.classList[0])}>
+      <div className='singleCard' onClick={(e) => this.props.removingOutfit(this.state.productId)}>
         <div className='imageContainer'>
           <img className='cardImage' src={this.state.cardData.url}></img>
-          <FaRegTimesCircle className='imageButton addingOutfit' />
+          <FaRegTimesCircle className='imageButton removingOutfit' />
         </div>
         <div>
           <p className='ProductInfo'>{this.state.cardData.category}</p>

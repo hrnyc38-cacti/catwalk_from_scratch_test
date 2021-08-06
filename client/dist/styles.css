@@ -461,10 +461,10 @@ h1, h2, h3, h4, h5, h6 {
   color:white;
   background-color: lightgray;
 }
-.addingOutfit {
+.removingOutfit {
   color: black;
 }
-.addingOutfit:hover{
+.removingOutfit:hover{
   color:red;
 }
 .related-modal{
