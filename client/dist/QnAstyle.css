@@ -1,6 +1,7 @@
 
 .modal {
   position: fixed;
+  z-index:9999;
   left: 0;
   top: 0;
   right: 0;
@@ -106,4 +107,12 @@
 
 .section-head {
   font-family: 'Montserrat', sans-serif;
+}
+.title-at-top {
+  font-family: 'Raleway', sans-serif;
+}
+
+.search-i {
+  position: relative;
+  top: 3.5px;
 }
