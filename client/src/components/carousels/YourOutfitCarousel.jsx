@@ -27,7 +27,7 @@ class YourOutfitCarousel extends React.Component {
     ];
     return (
       <div>
-        <h3>Your Outfit</h3>
+        <h5 className="section-head">Your Outfit</h5>
         <Carousel breakPoints={breakPoints}>
           <YourOutfitCard handleClick={this.addOutfit} />
           {this.state.outFits.map((product) => {

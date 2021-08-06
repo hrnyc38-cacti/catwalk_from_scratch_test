@@ -56,6 +56,7 @@ class Overview extends React.Component {
         </div>
         <div className="grid-child-2">
           <ProductInfo
+            description={this.props.currentProduct.description}
             name={this.props.currentProduct.name}
             category={this.props.currentCategory}
             price={this.props.currentProduct.default_price}

@@ -108,12 +108,15 @@ class App extends React.Component {
             for (let i = 2; i <= quantityAvailable; i++) {
               currentQuantitiesArray.push(i);
             }
-            // for (let i = 0; i < currentFavorites.length; i++) {
-            //   if (sku === currentFavorites[i].sku) {
-            //     isFavorite = true;
-            //     break;
-            //   }
-            // }
+
+            for (let i = 0; i < this.state.currentFavorites.length; i++) {
+              console.log('THIS IS SKU!!!!!!!!!!!!!', sku);
+              if (sku === currentFavorites[i].sku) {
+                isFavorite = true;
+                break;
+              }
+            }
+
             this.setState({
               currentStyleID: results.data.results[0].style_id,
               currentProduct: res.data,
@@ -145,31 +148,32 @@ class App extends React.Component {
     if (this.state.finishedLoading) {
       return (
         <div>
-            <Overview
-              currentProduct={this.state.currentProduct}
-              currentProductID={this.state.currentProductID}
-              currentCategory={this.state.currentProduct.category}
-              addToBag={this.state.addToBag}
-              currentPhotos={this.state.currentPhotos}
-              currentStyles={this.state.currentStyles}
-              currentThumbs={this.state.currentThumbs}
-              currentFavorites={this.state.currentFavorites}
-              photoIndex={this.state.photoIndex}
-              styleIndex={this.state.styleIndex}
-              styleName={this.state.styleName}
-              mainImage={this.state.mainImage}
-              handleUpdateMainAppState={this.handleUpdateMainAppState}
-              currentSizesAvailable={this.state.currentSizesAvailable}
-              currentQuantitiesAvailable={this.state.currentQuantitiesAvailable}
-              currentItemInFavorites={this.state.currentItemInFavorites}
-              currentSKU={this.state.currentSKU}
-              currentStyleID={this.state.currentStyleID}
-              selectedSize={this.state.selectedSize}
-              selectedQuantity={this.state.selectedQuantity}
-              ratings={this.state.ratings} />
-            <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
-            <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
-            <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} />
+          <Overview
+            currentProduct={this.state.currentProduct}
+            currentProductID={this.state.currentProductID}
+            currentCategory={this.state.currentProduct.category}
+            addToBag={this.state.addToBag}
+            currentPhotos={this.state.currentPhotos}
+            currentStyles={this.state.currentStyles}
+            currentThumbs={this.state.currentThumbs}
+            currentFavorites={this.state.currentFavorites}
+            photoIndex={this.state.photoIndex}
+            styleIndex={this.state.styleIndex}
+            styleName={this.state.styleName}
+            mainImage={this.state.mainImage}
+            handleUpdateMainAppState={this.handleUpdateMainAppState}
+            currentSizesAvailable={this.state.currentSizesAvailable}
+            currentQuantitiesAvailable={this.state.currentQuantitiesAvailable}
+            currentItemInFavorites={this.state.currentItemInFavorites}
+            currentSKU={this.state.currentSKU}
+            currentStyleID={this.state.currentStyleID}
+            selectedSize={this.state.selectedSize}
+            selectedQuantity={this.state.selectedQuantity}
+            ratings={this.state.ratings} />
+          <h3 className="slogan" >"{this.state.currentProduct.slogan}"</h3>
+          <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
+          <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
+          <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} />
         </div>
       );
     } else {

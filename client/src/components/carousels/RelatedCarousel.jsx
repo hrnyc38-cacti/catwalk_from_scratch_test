@@ -50,7 +50,7 @@ class RelatedCarousel extends React.Component {
     ];
     return (
       <div>
-        <h3>RELATED PRODUCTS</h3>
+        <h5 className="section-head">RELATED PRODUCTS</h5>
         <Carousel breakPoints={breakPoints} >
           {this.state.relatedDataID.map(product => {
             return (

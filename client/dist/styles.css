@@ -16,6 +16,12 @@ body {
   text-align: center;
 }
 
+.slogan {
+  text-align: center;
+  margin-bottom: 30px;
+  /* margin-left: 1px; */
+}
+
 
 
 /*VVVVVVVV********* PARENT OVERVIEW PAGE *****VVVVVVVVV*********/
@@ -23,7 +29,6 @@ body {
   margin-left: 70px;
   margin-right: 70px;
   margin-top: 20px;
-  margin-bottom: 30px;;
   /* max-width: 100%; */
   overflow: hidden;
   max-height: 500px;
@@ -118,6 +123,7 @@ body {
   /* max-height: 500px; */
   max-width: 100%;
   max-height: 150%;
+  box-shadow: 3px 3px 10px black;
   /* width:75% */
 
   /* object-fit: contain; */
@@ -128,10 +134,12 @@ body {
 }
 
 .thumbs img{
-  margin-top: 1px;
-  padding: 10px;
+  margin: 10px;
+  /* padding: 10px; */
   height: 55px;
   width: auto;
+  z-index: 5;
+  box-shadow: 3px 3px 20px black;
 }
 
 .thumbs-slider {
@@ -145,6 +153,8 @@ body {
 }
 
 .expand {
+  border-radius: 20%;
+  box-shadow: 1px 1px 20px white;
   height: 20px;
   width: auto;
   position: absolute; left: 95%; top: 4%;
@@ -154,7 +164,9 @@ body {
 .next-button {
   /* height: 20px;
   width: auto; */
+  border-radius: 50%;
   position: absolute; left: 95%; top: 45%;
+  box-shadow: 1px 1px 20px white;
   /* float: right; */
   /* box-shadow: 1px 1px white; */
   transform: scale(1.5);
@@ -163,6 +175,8 @@ body {
 .prev-button {
   /* height: 20px;
   width: auto; */
+  border-radius: 50%;
+  box-shadow: 1px 1px 20px white;
   position: absolute; left: 5%; top: 45%;
   float: left;
   transform: scale(1.5)
@@ -184,18 +198,26 @@ body {
 .product-info {
   /* display:flex; */
   margin: 5px;
+  box-shadow: 0px 0px 4px black;
   /* padding: 5px; */
   /* height: 100%;
   width: 100%; */
   /* border: solid 1px;
   border-color: black; */
   background-repeat: no-repeat;
-  background-image: linear-gradient(to top left, rgba(75, 70, 72, 0.096), rgb(182, 182, 189));
+  /* background-image: linear-gradient(to top left, rgba(75, 70, 72, 0.096), rgb(182, 182, 189)); */
   /* height: 100px; */
 }
 
+#read-all-reviews {
+  color: black;
+}
+
+.stars-on-product-info {
+  margin-right: 5px;
+}
+
 .category-display {
-  text-align: right;
   text-transform: uppercase;
 }
 
@@ -212,12 +234,13 @@ body {
 /*-----------CHILD OF OVERVIEW Product Selectors----------*/
 .product-selectors {
   margin: 5px;
+  box-shadow: 0px 0px 4px black;
   /* border: solid 1px;
   border-color: black; */
   display: grid;
   grid-template-rows: 1fr 1fr;
   background-repeat: no-repeat;
-  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  /* background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189)); */
   /* grid-template-columns: 1fr 1fr; */
 }
 
@@ -266,33 +289,53 @@ body {
 }
 
 .size-selector {
-  border: solid .5px;
-  border-color:black;
-  transform: scale(1.5);
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 4px;
 
   /* size: 200px; */
 }
 
 .quantity-selector {
-  border: solid .5px;
-  border-color: black;
-  transform: scale(1.5);
-  /* size: 200px; */
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
 }
 
 .add-to-bag-button {
-  border: solid .5px;
-  border-color: black;
-  transform: scale(1.5);
-
-  /* size: 200px; */
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
 }
 
 .favs-star-unchecked {
   /* height: 25px;
   width: auto; */
-  transform: scale(1.5);
+  /* transform: scale(1.5); */
   /* object-fit: cover; */
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
 }
 /*---------END--CHILD OF OVERVIEW Product Selectors----------*/
 
@@ -310,10 +353,11 @@ body {
   /* display: flex; */
   /* flex-direction: column; */
   display: grid;
+  box-shadow: 0px 0px 4px black;
   /* height: 200px;
   width: 200px; */
   background-repeat: no-repeat;
-  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  /* background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189)); */
   grid-template-rows: 1fr 7fr;
   /* overflow:hidden; */
 }
