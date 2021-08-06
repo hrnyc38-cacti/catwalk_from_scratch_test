@@ -25,16 +25,21 @@ class App extends React.Component {
       photoIndex: 0,
       styleIndex: 0,
       styleName: '',
-      mainImage: ''
+      mainImage: '',
+      currentSizesAvailable: [],
+      currentQuantitiesAvailable: [],
+      currentSKU: '',
+      currentStyleID: '',
+      selectedSize: 'M',
+      selectedQuantity: 1
     }
     this.cardOnClick = this.cardOnClick.bind();
     this.handleUpdateMainAppState = this.handleUpdateMainAppState.bind(this);
   }
 
   handleUpdateMainAppState(newState) {
-    console.log('I made it back up', newState)
+    //console.log('I made it back up', newState)
     this.setState(newState);
-    console.log(this.state);
   }
 
   componentDidMount() {
@@ -80,6 +85,20 @@ class App extends React.Component {
               currentPhotosArray.push(photoData[i].url);
               currentThumbsArray.push(photoData[i].thumbnail_url);
             }
+            let sizeData = results.data.results[this.state.styleIndex].skus;
+            let currentSizesArray = [];
+            let quantityAvailable = 1;
+            let currentQuantitiesArray = [];
+            for (let key in sizeData) {
+              currentSizesArray.push(sizeData[key].size);
+              if (sizeData[key].size === 'M') {
+                quantityAvailable = sizeData[key].quantity
+              }
+            }
+            for (let i = 2; i <= quantityAvailable; i++) {
+              currentQuantitiesArray.push(i);
+            }
+
             this.setState({
               products: res.data,
               currentProduct: res.data[0],
@@ -89,9 +108,12 @@ class App extends React.Component {
               currentThumbs: currentThumbsArray,
               styleName: results.data.results[this.state.styleIndex].name,
               mainImage: photoData[this.state.photoIndex].url,
+              currentSizesAvailable: currentSizesArray,
+              currentQuantitiesAvailable: currentQuantitiesArray,
               finishedLoading: true
             })
           });
+
       })
       .catch((err) => {
         console.err('failed to load data from server', err);
@@ -116,7 +138,13 @@ class App extends React.Component {
               styleIndex={this.state.styleIndex}
               styleName={this.state.styleName}
               mainImage={this.state.mainImage}
-              handleUpdateMainAppState={this.handleUpdateMainAppState} />
+              handleUpdateMainAppState={this.handleUpdateMainAppState}
+              currentSizesAvailable={this.state.currentSizesAvailable}
+              currentQuantitiesAvailable={this.state.currentQuantitiesAvailable}
+              currentSKU={this.state.currentSKU}
+              currentStyleID={this.state.currentStyleID}
+              selectedSize={this.state.selectedSize}
+              selectedQuantity={this.state.selectedQuantity} />
           </div>
           <div>
             <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />

@@ -71,7 +71,13 @@ class Overview extends React.Component {
             currentProduct={this.props.currentProduct}
             currentStyles={this.props.currentStyles}
             styleName={this.props.styleName}
-            styleIndex={this.props.styleIndex} />
+            styleIndex={this.props.styleIndex}
+            currentSizesAvailable={this.props.currentSizesAvailable}
+            currentQuantitiesAvailable={this.props.currentQuantitiesAvailable}
+            currentSKU={this.props.currentSKU}
+            currentStyleID={this.props.currentStyleID}
+            selectedSize={this.props.selectedSize}
+            selectedQuantity={this.props.selectedQuantity} />
         </div>
       </div>
     )

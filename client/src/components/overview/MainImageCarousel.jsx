@@ -2,7 +2,6 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { FaExpandArrowsAlt, FaArrowCircleRight, FaArrowCircleLeft } from 'react-icons/fa';
 
-var proper = 'background-color';
 
 class MainImageCarousel extends React.Component {
   constructor(props) {
@@ -11,6 +10,9 @@ class MainImageCarousel extends React.Component {
       currentPhotos: []
     };
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
+    this.handleExpandButtonClick = this.handleExpandButtonClick.bind(this);
+    this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
+    this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
   }
 
   componentDidUpdate() {
@@ -23,6 +25,37 @@ class MainImageCarousel extends React.Component {
       photoIndex: index,
       mainImage: this.props.currentPhotos[index]
     }
+    this.props.handleUpdateMainAppState(newState);
+  }
+
+  handleNextButtonClick() {
+    let newIndex = this.props.photoIndex;
+    newIndex++;
+    if (newIndex >= this.props.currentPhotos.length) {
+      newIndex = 0;
+    }
+    let newState = {
+      photoIndex: newIndex,
+      mainImage: this.props.currentPhotos[newIndex]
+    };
+    this.props.handleUpdateMainAppState(newState);
+  }
+
+  handlePreviousButtonClick() {
+    let newIndex = this.props.photoIndex;
+    newIndex--;
+    if (newIndex < 0) {
+      newIndex = this.props.currentPhotos.length - 1;
+    }
+    let newState = {
+      photoIndex: newIndex,
+      mainImage: this.props.currentPhotos[newIndex]
+    };
+    this.props.handleUpdateMainAppState(newState);
+  }
+
+  handleExpandButtonClick() {
+    let newState = {};
     this.props.handleUpdateMainAppState(newState);
   }
 
@@ -41,11 +74,11 @@ class MainImageCarousel extends React.Component {
           })}
         </div>
         <div className="current-photo">
-          <img src={photoURL} />
+          <img className="this-image" src={photoURL} />
         </div>
-        <FaExpandArrowsAlt className="expand" />
-        <FaArrowCircleRight className="next-button" />
-        <FaArrowCircleLeft className="prev-button" />
+        <FaExpandArrowsAlt className="expand" onClick={() => this.handleExpandButtonClick()} />
+        <FaArrowCircleRight className="next-button" onClick={() => this.handleNextButtonClick()} />
+        <FaArrowCircleLeft className="prev-button" onClick={() => this.handlePreviousButtonClick()} />
       </div >
     )
   }
