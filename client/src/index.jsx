@@ -48,11 +48,7 @@ class App extends React.Component {
     this.getProductByID(this.state.currentProductID);
   }
   cardOnClick = (e) => {
-    console.log('The sent item: ', e);
-    let newID = e;
-    console.log('The state before update: ', this.state.currentProductID);
-    this.setState({ currentProductID: newID });
-    console.log('The state after updating: ', this.state.currentProductID)
+    this.setState({ currentProductID: e });
   }
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
@@ -60,9 +56,7 @@ class App extends React.Component {
       this.componentDidMount();
     }
   }
-  cardOnClick = (e) => {
-    this.setState({ currentProductID: e });
-  }
+
   getProductByID(ID) {
     let options = {
       type: 'GET',
