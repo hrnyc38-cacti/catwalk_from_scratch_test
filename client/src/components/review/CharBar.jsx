@@ -9,6 +9,7 @@ function CharBar({title, content}) {
   }
   var value = content.value;
 
+
   const testValue1 = (number) => {
     if (number < 1.67) {
       let position = (number / 1.67).toFixed(2) * 100 + '%';
@@ -46,42 +47,59 @@ function CharBar({title, content}) {
     }
   }
 
-  return (
-    <tbody>
-      <tr>
-        <td>{title}</td>
-        <td width="150px">
-          <div style={style}>
-            {testValue1(value)}
-          </div>
-        </td>
-        <td width="150px">
-          <div style={style}>
-            {testValue2(value)}
-            {/* <span ><FiTriangle style={istyle}/></span> */}
-          </div>
-        </td>
-        <td width="150px">
-          <div style={style}>
-            {testValue3(value)}
-            {/* <span className="bar-tag">beyond</span> */}
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td> </td>
-        <td >
-            <span>below expectation</span>
-        </td>
-        <td >
-            <span>meet expectation</span>
-        </td>
-        <td >
-            <span>beyond expectation</span>
-        </td>
-      </tr>
-    </tbody>
-  )
+  var labelDict = {
+      Fit: ['Runs small', 'Perfect', 'Runs large'],
+      Size: ['Runs small', 'Perfect', 'Runs large'],
+      Length: ['Runs short', 'Perfect', 'Runs Long'],
+      Width: ['Runs narrow', 'Perfect', 'Runs wide'],
+      Comfort: ['Poor', 'OK', 'Perfect'],
+      Quality: ['Poor', 'OK', 'Perfect']
+    };
+
+  //console.log('TITLE ', labelDict[title][0]);
+  if (!title) {
+    return (
+      <div>Loading...</div>
+    )
+  } else {
+    return (
+      <tbody>
+        <tr>
+          <td>{title}</td>
+          <td width="150px">
+            <div style={style}>
+              {testValue1(value)}
+            </div>
+          </td>
+          <td width="150px">
+            <div style={style}>
+              {testValue2(value)}
+              {/* <span ><FiTriangle style={istyle}/></span> */}
+            </div>
+          </td>
+          <td width="150px">
+            <div style={style}>
+              {testValue3(value)}
+              {/* <span className="bar-tag">beyond</span> */}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td >
+              <span>{labelDict[title][0]}</span>
+          </td>
+          <td >
+              <span>{labelDict[title][1]}</span>
+          </td>
+          <td >
+              <span>{labelDict[title][2]}</span>
+          </td>
+        </tr>
+      </tbody>
+    )
+
+  }
 }
 
 export default CharBar;

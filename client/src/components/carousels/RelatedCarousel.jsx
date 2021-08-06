@@ -8,10 +8,9 @@ class RelatedCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productID: this.props.productId,
       relatedDataID: []
     };
-    this.getRelatedProducts = this.getRelatedProducts.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
     this.getRelatedProducts();
@@ -29,7 +28,6 @@ class RelatedCarousel extends React.Component {
         Authorization: TOKEN
       }
     };
-
     axios(options)
       .then((res) => {
         this.setState({ relatedDataID: res.data });
@@ -37,6 +35,11 @@ class RelatedCarousel extends React.Component {
       .catch((err) => {
         console.log(err);
       });
+  }
+  componentDidUpdate(previousProps, previousState, snapShot) {
+    if (previousProps.productId !== this.props.productId) {
+      this.componentDidMount();
+    }
   }
   render() {
     var breakPoints = [
@@ -56,10 +59,8 @@ class RelatedCarousel extends React.Component {
             );
           })}
         </Carousel >
-
       </div>
     );
   }
 };
-
 export default RelatedCarousel;

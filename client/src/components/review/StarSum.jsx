@@ -21,24 +21,43 @@ function StarSum({ ratings }) {
 
   const getStars = (num) => {
     //console.log('NOW in getstars');
+
+    let deciPart = num - Math.floor(num);
+    num = Math.floor(num);
+    let outlineCount = 5 - num;
     let j = 0;
+    let halfStar = [];
+    if (deciPart !== 0) {
+      halfStar = [
+        <BsStarHalf key={j++} />
+      ];
+      outlineCount--;
+    }
     let filledStars = [...Array(num)].map(() => {
       return <BsStarFill key={j++} />
     })
     //let n = 5 - j
-    let outlineStars = [...Array(5 - num)].map(() => {
+    let outlineStars = [...Array(outlineCount)].map(() => {
       return <BsStar key={j++} />
     })
-    var stars = filledStars.concat(outlineStars);
+    var stars = filledStars.concat(halfStar, outlineStars);
     return stars
   }
   return (
     <div>
       <span className="star-sum">{averageStar} </span>
-      {getStars(Math.floor(averageStar))}
+      {getStars(averageStar)}
     </div>
 
   )
 }
 
 export default StarSum;
+
+// deciPart = deciPart * 100
+// halfStar = [<BsStarFill style={{
+//   display: "inline-block",
+//   width: "7px",
+//   overflow: "hidden",
+//   direction: (deciPart%25===0) ? "ltr" : "rtl"
+// }} />]

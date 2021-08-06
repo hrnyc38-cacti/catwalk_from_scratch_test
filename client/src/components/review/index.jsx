@@ -10,7 +10,8 @@ class Review extends React.Component {
     this.state = {
       reviews: {},
       meta: {}
-    }
+    };
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
   componentDidMount() {
     axios.get(
@@ -30,9 +31,19 @@ class Review extends React.Component {
         this.setState({ meta: result.data });
         //console.log('THIS IS meta', this.state.meta);
       })
+      .then(() => {
+        this.props.passRatings(this.state.meta.ratings);
+      })
       .catch((err) => {
         console.log(err);
       })
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Previous props ', prevProps);
+    if (prevProps.productId !== this.props.productId) {
+      console.log('id props has changed.');
+      this.componentDidMount();
+    }
   }
 
   render() {

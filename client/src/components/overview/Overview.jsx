@@ -58,7 +58,8 @@ class Overview extends React.Component {
           <ProductInfo
             name={this.props.currentProduct.name}
             category={this.props.currentCategory}
-            price={this.props.currentProduct.default_price} />
+            price={this.props.currentProduct.default_price}
+            ratings={this.props.ratings}/>
           <StyleSelection
             currentStyles={this.props.currentStyles}
             currentThumbs={this.props.currentThumbs}

@@ -31,7 +31,8 @@ class App extends React.Component {
       currentSKU: '',
       currentStyleID: '',
       selectedSize: 'M',
-      selectedQuantity: 1
+      selectedQuantity: 1,
+      ratings: null
     }
     this.cardOnClick = this.cardOnClick.bind();
     this.handleUpdateMainAppState = this.handleUpdateMainAppState.bind(this);
@@ -45,15 +46,21 @@ class App extends React.Component {
   componentDidMount() {
     this.getProductsByPage(1);
   }
+  cardOnClick = (e) => {
+    console.log('The sent item: ', e);
+    let newID = e;
+    console.log('The state before update: ', this.state.currentProductID);
+    this.setState({ currentProductID: newID });
+    console.log('The state after updating: ', this.state.currentProductID)
+  }
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
+      console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
     }
   }
   cardOnClick = (e) => {
-    //console.log('The sent item: ', e);
     this.setState({ currentProductID: e });
-    //console.log('The state after updating: ', this.state.currentProductID)
   }
 
   getProductsByPage(page) {
@@ -120,6 +127,11 @@ class App extends React.Component {
       })
   }
 
+  passRatings(rating) {
+    this.setState({ ratings: rating });
+    console.log('RATINGS IN MAIN PAGE ', this.state.ratings);
+  }
+
 
   render() {
     if (this.state.finishedLoading) {
@@ -144,7 +156,8 @@ class App extends React.Component {
               currentSKU={this.state.currentSKU}
               currentStyleID={this.state.currentStyleID}
               selectedSize={this.state.selectedSize}
-              selectedQuantity={this.state.selectedQuantity} />
+              selectedQuantity={this.state.selectedQuantity}
+              ratings={this.state.ratings} />
           </div>
           <div>
             <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
@@ -153,7 +166,7 @@ class App extends React.Component {
             <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
           </div>
           <div>
-            <Review productId={this.state.currentProduct.id} />
+            <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} />
           </div>
         </div>
       );

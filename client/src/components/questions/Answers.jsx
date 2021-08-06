@@ -28,7 +28,7 @@ function Answers ({answers}) {
 
     useEffect(() => {
       loopWithSlice(0, ansPerPage);
-    }, []);
+    }, [answers]);
 
     const handleShowMoreAs = () => {
       loopWithSlice(0, next + ansPerPage);
@@ -37,8 +37,8 @@ function Answers ({answers}) {
 
     return (
       <div>
-        <ul>{ansToShow}</ul>
-        <button onClick={handleShowMoreAs}>LOAD MORE ANSWERS</button>
+        <ul>{ansToShow}</ul><br/>
+        <button className="load-A-bttn" onClick={handleShowMoreAs}>LOAD MORE ANSWERS</button>
       </div>
     )
   }
