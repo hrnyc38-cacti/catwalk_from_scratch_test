@@ -59,7 +59,7 @@ class Overview extends React.Component {
             name={this.props.currentProduct.name}
             category={this.props.currentCategory}
             price={this.props.currentProduct.default_price}
-            ratings={this.props.ratings}/>
+            ratings={this.props.ratings} />
           <StyleSelection
             currentStyles={this.props.currentStyles}
             currentThumbs={this.props.currentThumbs}
@@ -68,9 +68,14 @@ class Overview extends React.Component {
             styleName={this.props.styleName} />
           <ProductSelectors
             handleUpdateMainAppState={this.props.handleUpdateMainAppState}
+            addToBag={this.props.addToBag}
+            currentProductID={this.props.currentProductID}
             currentFavorites={this.props.currentFavorites}
+            currentCategory={this.props.currentCategory}
             currentProduct={this.props.currentProduct}
             currentStyles={this.props.currentStyles}
+            currentThumbs={this.props.currentThumbs}
+            currentItemInFavorites={this.props.currentItemInFavorites}
             styleName={this.props.styleName}
             styleIndex={this.props.styleIndex}
             currentSizesAvailable={this.props.currentSizesAvailable}

@@ -4,8 +4,6 @@ import { BsStar } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 
 function ProductInfo({ ratings, category, name, price }) {
-  //console.log('this is category', props.category);
-  console.log('HERE IN NICKS CO', ratings)
   var getStars = (ratings) => {
     let star = [];
     let count = [];
