@@ -65,7 +65,7 @@ function CharBar({title, content}) {
     return (
       <tbody>
         <tr>
-          <td>{title}</td>
+          <td>{title}:</td>
           <td width="150px">
             <div style={style}>
               {testValue1(value)}
@@ -87,13 +87,13 @@ function CharBar({title, content}) {
         <tr>
           <td> </td>
           <td >
-              <span>{labelDict[title][0]}</span>
+              <span className='left-tag'>{labelDict[title][0]}</span>
           </td>
           <td >
-              <span>{labelDict[title][1]}</span>
+              <span className='middle-tag'>{labelDict[title][1]}</span>
           </td>
           <td >
-              <span>{labelDict[title][2]}</span>
+              <span className='right-tag'>{labelDict[title][2]}</span>
           </td>
         </tr>
       </tbody>

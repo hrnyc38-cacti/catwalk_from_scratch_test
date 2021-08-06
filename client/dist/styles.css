@@ -205,7 +205,7 @@ body {
   /* border: solid 1px;
   border-color: black; */
   background-repeat: no-repeat;
-  background-image: linear-gradient(to top left, rgba(75, 70, 72, 0.096), rgb(182, 182, 189));
+  /* background-image: linear-gradient(to top left, rgba(75, 70, 72, 0.096), rgb(182, 182, 189)); */
   /* height: 100px; */
 }
 
@@ -240,7 +240,7 @@ body {
   display: grid;
   grid-template-rows: 1fr 1fr;
   background-repeat: no-repeat;
-  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  /* background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189)); */
   /* grid-template-columns: 1fr 1fr; */
 }
 
@@ -289,33 +289,53 @@ body {
 }
 
 .size-selector {
-  border: solid .5px;
-  border-color:black;
-  transform: scale(1.5);
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 4px;
 
   /* size: 200px; */
 }
 
 .quantity-selector {
-  border: solid .5px;
-  border-color: black;
-  transform: scale(1.5);
-  /* size: 200px; */
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
 }
 
 .add-to-bag-button {
-  border: solid .5px;
-  border-color: black;
-  transform: scale(1.5);
-
-  /* size: 200px; */
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
 }
 
 .favs-star-unchecked {
   /* height: 25px;
   width: auto; */
-  transform: scale(1.5);
+  /* transform: scale(1.5); */
   /* object-fit: cover; */
+  background: transparent;
+  border: 2px solid #696969;
+  text-decoration: bold;
+  padding: 12px 30px;
+  text-align: left;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
 }
 /*---------END--CHILD OF OVERVIEW Product Selectors----------*/
 
@@ -337,7 +357,7 @@ body {
   /* height: 200px;
   width: 200px; */
   background-repeat: no-repeat;
-  background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
+  /* background-image: linear-gradient(to top left, rgba(66, 59, 61, 0.096), rgb(182, 182, 189)); */
   grid-template-rows: 1fr 7fr;
   /* overflow:hidden; */
 }
@@ -446,4 +466,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .addingOutfit:hover{
   color:red;
+}
+.modalAlan{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -56,8 +56,13 @@ class Review extends React.Component {
       //console.log('meta ', this.state.meta);
       return (
         <div>
+<<<<<<< HEAD
           <h5 id="reviews">RATINGS & REVIEWS</h5>
+=======
+          <h5 className="section-head">RATINGS & REVIEWS</h5>
+>>>>>>> 30bc4bd6f9c00c9fb0c97948f2391992f9b69f85
           <RateSum meta={this.state.meta} />
+          <br/>
         </div>
       )
     }

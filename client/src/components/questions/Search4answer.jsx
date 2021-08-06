@@ -1,14 +1,14 @@
 import React from "react";
-import { FaSearch } from 'react-icons/fa';
+import { BiSearchAlt2 } from 'react-icons/bi';
 
 function Search4answer ({updateInput}) {
   const barStyle = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
 
   return (
     <form>
-      <input type="text" placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+      <input type="text" className="search-bar" placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS... '
        onChange={(e) => updateInput(e.target.value)} style={barStyle}/>
-      <button type="submit"><FaSearch/></button>
+      <span type="submit" className="search-i"><BiSearchAlt2 /></span>
     </form>
   )
 }
