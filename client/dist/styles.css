@@ -152,7 +152,7 @@ body {
   z-index: 9;
 }
 
-.expand {
+.expand-button {
   border-radius: 20%;
   box-shadow: 1px 1px 20px white;
   height: 20px;

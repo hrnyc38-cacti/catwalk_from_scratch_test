@@ -1,18 +1,20 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { FaExpandArrowsAlt, FaArrowCircleRight, FaArrowCircleLeft } from 'react-icons/fa';
-
+import ImagePopUp from './ImagePopUp.jsx';
 
 class MainImageCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhotos: []
+      currentPhotos: [],
+      showPopup: false
     };
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
-    this.handleExpandButtonClick = this.handleExpandButtonClick.bind(this);
+    //this.handleExpandButtonClick = this.handleExpandButtonClick.bind(this);
     this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
+
   }
 
   componentDidUpdate() {
@@ -54,8 +56,16 @@ class MainImageCarousel extends React.Component {
     this.props.handleUpdateMainAppState(newState);
   }
 
-  handleExpandButtonClick() {
-    this.props.handleUpdateMainAppState(newState);
+  handleShowModal () {
+    console.log('button was clicked!');
+    this.setState({
+      showPopup: true
+    })
+  }
+  handleHideModal () {
+    this.setState({
+      showPopup: false
+    })
   }
 
 
@@ -74,8 +84,9 @@ class MainImageCarousel extends React.Component {
         </div>
         <div className="current-photo">
           <img className="this-image" src={photoURL} />
+          <ImagePopUp src={photoURL} show={this.state.showPopup} onClose={this.handleHideModal.bind(this)}/>
         </div>
-        <FaExpandArrowsAlt className="expand" onClick={() => this.handleExpandButtonClick()} />
+        <FaExpandArrowsAlt className="expand-button" onClick={this.handleShowModal.bind(this)}/>
         <FaArrowCircleRight className="next-button" onClick={() => this.handleNextButtonClick()} />
         <FaArrowCircleLeft className="prev-button" onClick={() => this.handlePreviousButtonClick()} />
       </div >
