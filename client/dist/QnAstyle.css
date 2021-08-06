@@ -116,3 +116,35 @@
   position: relative;
   top: 3.5px;
 }
+
+.modal-image {
+  position: fixed;
+  z-index:9999;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content-image {
+  width: 500px;
+  background-color: #fff;
+}
+
+.modal-header-image, .modal-footer-image {
+  padding: 0;
+}
+
+.modal-title-image {
+  margin: 0;
+}
+
+.modal-body-image {
+  padding: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}

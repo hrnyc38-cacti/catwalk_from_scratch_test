@@ -11,9 +11,11 @@ class RelatedProductCard extends React.Component {
     super(props);
     this.state = {
       productId: this.props.productID,
-      cardData: ''
+      cardData: '',
+      show: false
     };
     this.eventHandler = this.eventHandler.bind(this);
+    this.closeModule = this.closeModule.bind(this);
   }
   componentDidMount() {
     if (this.state.productId) {
@@ -67,16 +69,18 @@ class RelatedProductCard extends React.Component {
   }
   eventHandler(e) {
     if (e === 'imageButton') {
-      console.log('related button');
+      this.setState({ show: true });
     } else {
       this.props.cardOnClick(this.state.cardData.id);
     }
   }
+  closeModule() {
+    this.setState({show: false});
+  }
   render() {
     return (
       <div>
-        {/* <Modal /> */}
-<div>
+        <Modal show={this.state.show} closeModule={this.closeModule}/>
         <div className='singleCard' onClick={(e) => this.eventHandler(e.target.classList[0])}>
           <div className='imageContainer'>
             <img className='cardImage' src={this.state.cardData.url}></img>
@@ -94,7 +98,6 @@ class RelatedProductCard extends React.Component {
               className='ProductInfo'
             />
           </div>
-        </div>
         </div>
       </div>
     );

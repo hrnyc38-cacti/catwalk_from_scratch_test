@@ -11,11 +11,10 @@ class MainImageCarousel extends React.Component {
       showPopup: false
     };
     this.handleThumbnailClick = this.handleThumbnailClick.bind(this);
-    this.handleExpandButtonClick = this.handleExpandButtonClick.bind(this);
+    //this.handleExpandButtonClick = this.handleExpandButtonClick.bind(this);
     this.handlePreviousButtonClick = this.handlePreviousButtonClick.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
-    // this.handleShowPopup = this.handleShowPopup.bind(this);
-    // this.handleHidePopup = this.handleHidePopup.bind(this);
+
   }
 
   componentDidUpdate() {
@@ -57,17 +56,13 @@ class MainImageCarousel extends React.Component {
     this.props.handleUpdateMainAppState(newState);
   }
 
-  // handleExpandButtonClick() {
-  //   let newState = {};
-  //   this.props.handleUpdateMainAppState(newState);
-  // }
-  handleShowPopup (e) {
+  handleShowModal () {
     console.log('button was clicked!');
     this.setState({
       showPopup: true
     })
   }
-  handleHidePopup () {
+  handleHideModal () {
     this.setState({
       showPopup: false
     })
@@ -89,9 +84,9 @@ class MainImageCarousel extends React.Component {
         </div>
         <div className="current-photo">
           <img className="this-image" src={photoURL} />
-          {/* <ImagePopUp src={photoURL} show={this.state.showPopup} onClose={this.handleHidePopup}/> */}
+          <ImagePopUp src={photoURL} show={this.state.showPopup} onClose={this.handleHideModal.bind(this)}/>
         </div>
-        {/* <FaExpandArrowsAlt className="expand" onClick={(e)=>this.handleShowPopup} /> */}
+        <FaExpandArrowsAlt className="expand-button" onClick={this.handleShowModal.bind(this)}/>
         <FaArrowCircleRight className="next-button" onClick={() => this.handleNextButtonClick()} />
         <FaArrowCircleLeft className="prev-button" onClick={() => this.handlePreviousButtonClick()} />
       </div >

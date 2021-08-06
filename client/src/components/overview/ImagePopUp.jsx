@@ -8,14 +8,14 @@ function ImagePopUp (props) {
 
 
   return (
-    <div className="modal" onClick={props.onClose}>
-      <div className="modal-content" onClick={(e)=> {e.stopPropagation()}}>
-        <div className="modal-header">
-          <h4 className="modal-title"></h4>
+    <div className="modal-image" onClick={props.onClose}>
+      <div className="modal-content-image" onClick={(e)=> {e.stopPropagation()}}>
+        <div className="modal-header-image">
+          <h4 className="modal-title-image"></h4>
         </div>
-        <div className="modal-body">
+        <div className="modal-body-image">
           <img className="popup-image" src={props.src} />
-        <div className="modal-footer">
+        <div className="modal-footer-image">
           <button className="button" onClick={props.onClose}>Close</button>
         </div>
         </div>
