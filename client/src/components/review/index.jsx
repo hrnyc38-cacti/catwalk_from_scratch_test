@@ -18,7 +18,7 @@ class Review extends React.Component {
       { headers: { Authorization: TOKEN } })
       .then((results) => {
         this.setState({ reviews: results.data });
-        console.log('THIS IS reviews', this.state.reviews);
+        //console.log('THIS IS reviews', this.state.reviews);
       })
       .then(() =>
         axios.get(
@@ -28,25 +28,25 @@ class Review extends React.Component {
       )
       .then((result) => {
         this.setState({ meta: result.data });
-        console.log('THIS IS meta', this.state.meta);
+        //console.log('THIS IS meta', this.state.meta);
       })
       .catch((err) => {
         console.log(err);
       })
   }
 
-  render () {
+  render() {
     let isloaded = !!this.state.meta.ratings;
     if (!isloaded) {
       return (
         <div>Loading...</div>
       )
     } else {
-      console.log('meta ', this.state.meta);
+      //console.log('meta ', this.state.meta);
       return (
         <div>
           <h5>RATINGS & REVIEWS</h5>
-          <RateSum meta={this.state.meta}/>
+          <RateSum meta={this.state.meta} />
         </div>
       )
     }

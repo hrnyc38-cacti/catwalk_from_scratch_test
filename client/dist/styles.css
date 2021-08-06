@@ -40,19 +40,41 @@
 
 /*VVVVVVVV********* PARENT OVERVIEW PAGE *****VVVVVVVVV*********/
 .grid-container {
-  margin: 10px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 20px;
+  margin-bottom: 20px;;
+  /* max-width: 100%; */
+  overflow: hidden;
+  max-height: 500px;
+  /* border: solid 1px;
+  border-color: black; */
   display: grid;
   grid-template-columns: 2fr 1fr;
   /* padding: 20px; */
 }
 
 .grid-child-1 {
+  max-height: 500px;
+  max-width: 670px;
+  /* overflow: hidden; */
+  /* margin-right: 25px; */
+  /* position: relative; */
+  /* object-fit: contain; */
+  /* height: 500px; */
+  /* width: 700px; */
+  /* object-position: center; */
   /* display: grid; */
   /* padding: 20px; */
 }
 .grid-child-2 {
+  /* margin-right: 10px; */
   display: grid;
-  height: 550px;
+  height: 500px;
+  /* width: auto; */
+
+  /* overflow: hidden; */
+  max-height: 500px;
   grid-template-rows: 2fr 4fr 4fr;
   /* padding: 20px; */
 }
@@ -65,61 +87,107 @@
 
 /*---------CHILD OF OVERVIEW Main Image Carousel----------*/
 .overview-carousel {
-  display: grid;
-  grid-template-columns: 1fr 6fr;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 6fr; */
   margin-left: 25px;
-  padding: 10px;
-  height: 550px;
-  width: 750px;
-  overflow: hidden;
-  border: solid 1px;
-  border-color: black;
+  margin-bottom: 20px;
+  /* padding: 8px; */
+  /* height: 500px;
+  width: 700px; */
+  /* object-fit: contain; */
+  /* object-position: center; */
+  /* overflow: hidden; */
+  /* object-fit: cover; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 500px;
+  max-width: 670px;
+  /* border: solid 1px;
+  border-color: black; */
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
   background-image: linear-gradient(to bottom right, rgba(66, 59, 61, 0.096), rgb(182, 182, 189));
 }
 
-.current-photo img {
+.current-photo {
+  /* object-fit: fill; */
+  /* object-position: center; */
   /* overflow: hidden; */
+  /* object-position: center; */
   /* size: fill; */
-  width: 85%;
-  height:auto;
-  position: relative; top: -80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: relative; top: 50%; left: 50%; */
+  /* max-height: 500px; */
+  /* max-width: 670px; */
+  height: 100%;
+  width: 100%;
+  /* text-align: center; */
+  /* align-content: center; */
+  /* max-height: 600px;
+  max-width: 700px; */
+  /* height: 25%; */
+  /* width: auto; */
+  /* position: relative; */
   /* float: right; */
 }
 
+.this-image {
+  /* display: block; */
+  /* max-height: 500px; */
+  max-width: 100%;
+  max-height: 150%;
+  /* width:75% */
+
+  /* object-fit: contain; */
+  /* justify-content: center; */
+  /* height: 300px; */
+  /* width: auto; */
+
+}
+
 .thumbs img{
-  margin-top: 5px;
+  margin-top: 1px;
   padding: 10px;
-  height: 53px;
+  height: 55px;
   width: auto;
 }
 
 .thumbs-slider {
-  margin-top: 30px;
-  margin-left: 20px;
+  margin-top: 5px;
+  /* position: fixed; */
+  /* margin-left: 55px; */
+  position: absolute; left: 60px;
+  width: 70px;
+  height: 500px;
+  z-index: 9;
 }
 
 .expand {
   height: 20px;
   width: auto;
-  position: absolute; left: 61%; top: 10%;
+  position: absolute; left: 95%; top: 4%;
   float: right;
 }
 
 .next-button {
   /* height: 20px;
   width: auto; */
-  position: absolute; left: 61%; top: 45%;
-  float: right;
+  position: absolute; left: 95%; top: 45%;
+  /* float: right; */
+  /* box-shadow: 1px 1px white; */
+  transform: scale(1.5);
 }
 
 .prev-button {
   /* height: 20px;
   width: auto; */
-  position: absolute; left: 10%; top: 45%;
+  position: absolute; left: 5%; top: 45%;
   float: left;
+  transform: scale(1.5)
 }
 
 .favs-star-unchecked {
@@ -139,9 +207,20 @@
   /* display:flex; */
   margin: 5px;
   /* padding: 5px; */
+  /* height: 100%;
+  width: 100%; */
   border: solid 1px;
   border-color: black;
   /* height: 100px; */
+}
+
+.category-display {
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.price-display {
+  text-align: right;
 }
 /*---------END--CHILD OF OVERVIEW Product Info----------*/
 
@@ -155,57 +234,83 @@
   margin: 5px;
   border: solid 1px;
   border-color: black;
-  /* display: grid;
+  display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr; */
+  /* grid-template-columns: 1fr 1fr; */
 }
 
+
 .size-and-quantity-div {
-  border: solid 1px;
-  border-color: blue;
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
 
 .add-and-star-div {
-  border: solid 1px;
-  border-color: blue;
+  /* margin-right: 25px; */
   display: grid;
   grid-template-columns: 4fr 1fr;
 }
 
-.div-star-checkbox {
-  height: 50px;
-  width: auto;
+.div-size-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-add {
+  /* height: 100%;
+  width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-star {
+  height: 40px;
+  width: 60px;
+  /* margin-top: 10px; */
   border: solid 1px;
-  border-color: red;
-  object-fit: cover;
+  border-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
 }
 
 .size-selector {
-  border: solid 1px;
-  border-color: red;
+  border: solid .5px;
+  border-color:black;
+  transform: scale(1.5);
+
   /* size: 200px; */
 }
 
 .quantity-selector {
-  border: solid 1px;
-  border-color: red;
+  border: solid .5px;
+  border-color: black;
+  transform: scale(1.5);
   /* size: 200px; */
 }
 
 .add-to-bag-button {
-  border: solid 1px;
-  border-color: red;
+  border: solid .5px;
+  border-color: black;
+  transform: scale(1.5);
+
   /* size: 200px; */
 }
 
 .favs-star-unchecked {
-  height: 25px;
-  width: auto;
-  border: solid 1px;
-  border-color: red;
-  object-fit: cover;
+  /* height: 25px;
+  width: auto; */
+  transform: scale(1.5);
+  /* object-fit: cover; */
 }
 /*---------END--CHILD OF OVERVIEW Product Selectors----------*/
 

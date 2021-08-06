@@ -17,11 +17,11 @@ class RelatedCarousel extends React.Component {
     this.getRelatedProducts();
   }
   componentDidUpdate(previousProps, previousState, snapShot) {
-    if(previousProps !== this.props) {
+    if (previousProps !== this.props) {
       this.getRelatedProducts();
     }
   }
-  getRelatedProducts () {
+  getRelatedProducts() {
     let options = {
       type: 'get',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productId}/related`,
@@ -45,14 +45,14 @@ class RelatedCarousel extends React.Component {
       { width: 768, itemsToShow: 3 },
       { width: 1200, itemsToShow: 4 }
     ];
-    console.log(this.state.relatedDataID)
+    //console.log(this.state.relatedDataID)
     return (
       <div>
         <h3>RELATED PRODUCTS</h3>
         <Carousel breakPoints={breakPoints} >
           {this.state.relatedDataID.map(product => {
             return (
-              <RelatedProductCard key={product} productID={product} cardOnClick={this.props.cardOnClick}/>
+              <RelatedProductCard key={product} productID={product} cardOnClick={this.props.cardOnClick} />
             );
           })}
         </Carousel >

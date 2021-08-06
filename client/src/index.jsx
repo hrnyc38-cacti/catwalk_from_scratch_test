@@ -12,14 +12,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductID: 11003,
-      currProductName: 'fakeProduct',
-      products: [],//[{id, productname, slogan, description, category, price, features, photos(thumbnail, url), }],
-      reviews: [],
+      products: [],
       currentProduct: {},
-      product_id: '11001',
-      questions: [],
-      answers: [],
       cart: [],
       finishedLoading: false,
       currentProduct: {},
@@ -30,16 +24,22 @@ class App extends React.Component {
       currentCategory: '',
       photoIndex: 0,
       styleIndex: 0,
-      styleName: ''
+      styleName: '',
+      mainImage: '',
+      currentSizesAvailable: [],
+      currentQuantitiesAvailable: [],
+      currentSKU: '',
+      currentStyleID: '',
+      selectedSize: 'M',
+      selectedQuantity: 1
     }
     this.cardOnClick = this.cardOnClick.bind();
     this.handleUpdateMainAppState = this.handleUpdateMainAppState.bind(this);
   }
 
   handleUpdateMainAppState(newState) {
-    console.log('I made it back up', newState)
+    //console.log('I made it back up', newState)
     this.setState(newState);
-    console.log(this.state);
   }
 
   componentDidMount() {
@@ -51,9 +51,9 @@ class App extends React.Component {
     }
   }
   cardOnClick = (e) => {
-    console.log('The sent item: ', e);
+    //console.log('The sent item: ', e);
     this.setState({ currentProductID: e });
-    console.log('The state after updating: ', this.state.currentProductID)
+    //console.log('The state after updating: ', this.state.currentProductID)
   }
 
   getProductsByPage(page) {
@@ -66,12 +66,9 @@ class App extends React.Component {
     };
     axios(options)
       .then((res) => {
-        this.setState({ products: res.data, currentProduct: res.data[0] })
-      })
-      .then((res) => {
         let options2 = {
           type: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.state.currentProduct.id}/styles`,
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${res.data[0].id}/styles`,
           headers: {
             'Authorization': TOKEN
           }
@@ -88,20 +85,35 @@ class App extends React.Component {
               currentPhotosArray.push(photoData[i].url);
               currentThumbsArray.push(photoData[i].thumbnail_url);
             }
+            let sizeData = results.data.results[this.state.styleIndex].skus;
+            let currentSizesArray = [];
+            let quantityAvailable = 1;
+            let currentQuantitiesArray = [];
+            for (let key in sizeData) {
+              currentSizesArray.push(sizeData[key].size);
+              if (sizeData[key].size === 'M') {
+                quantityAvailable = sizeData[key].quantity
+              }
+            }
+            for (let i = 2; i <= quantityAvailable; i++) {
+              currentQuantitiesArray.push(i);
+            }
+
             this.setState({
+              products: res.data,
+              currentProduct: res.data[0],
               currentStyles: results.data.results,
               currentPhotos: currentPhotosArray,
-              currentCategory: this.state.currentProduct.category.toUpperCase(),
+              currentCategory: res.data[0].category.toUpperCase(),
               currentThumbs: currentThumbsArray,
               styleName: results.data.results[this.state.styleIndex].name,
+              mainImage: photoData[this.state.photoIndex].url,
+              currentSizesAvailable: currentSizesArray,
+              currentQuantitiesAvailable: currentQuantitiesArray,
               finishedLoading: true
             })
-            // console.log('results', results.data.results);
-            // console.log(this.state.currentStyles);
-            // console.log(this.state.currentThumbs);
-            // console.log(this.state.currentPhotos);
-            // console.log(this.state.currentProduct);
           });
+
       })
       .catch((err) => {
         console.err('failed to load data from server', err);
@@ -125,16 +137,23 @@ class App extends React.Component {
               photoIndex={this.state.photoIndex}
               styleIndex={this.state.styleIndex}
               styleName={this.state.styleName}
-              handleUpdateMainAppState={this.handleUpdateMainAppState} />
+              mainImage={this.state.mainImage}
+              handleUpdateMainAppState={this.handleUpdateMainAppState}
+              currentSizesAvailable={this.state.currentSizesAvailable}
+              currentQuantitiesAvailable={this.state.currentQuantitiesAvailable}
+              currentSKU={this.state.currentSKU}
+              currentStyleID={this.state.currentStyleID}
+              selectedSize={this.state.selectedSize}
+              selectedQuantity={this.state.selectedQuantity} />
           </div>
           <div>
-            <Carousels productId={this.state.currentProductID} cardOnClick={this.cardOnClick} />
+            <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
           </div>
           <div>
-            <Questions productId={this.state.currentProductID} productName={this.state.currProductName} />
+            <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
           </div>
           <div>
-            <Review productId={'11001'}/>
+            <Review productId={this.state.currentProduct.id} />
           </div>
         </div>
       );

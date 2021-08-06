@@ -20,7 +20,7 @@ class Questions extends React.Component {
       .then((results) => {
         //console.log(results);
         this.setState({ questions: results.data })
-        console.log('THIS IS STATE', this.state.questions)
+        //console.log('THIS IS STATE', this.state.questions)
       })
       .catch((err) => {
         console.log(err);
@@ -29,7 +29,7 @@ class Questions extends React.Component {
 
 
   render() {
-    console.log('THIS IS STATE.result ', this.state.questions.results);
+    //console.log('THIS IS STATE.result ', this.state.questions.results);
     let isloaded = !!this.state.questions.results;
     if (!isloaded) {
       return (
@@ -39,7 +39,7 @@ class Questions extends React.Component {
       return (
         <div>
           <h5>QUESTIONS & ANSWERS</h5>
-          <SearchPage questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName}/>
+          <SearchPage questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName} />
           {/* <QandAList questions={this.state.questions.results} productId={this.props.productId} productName={this.props.productName} /> */}
 
           {/* <button>MORE ANSWERED QUESTIONS</button> */}

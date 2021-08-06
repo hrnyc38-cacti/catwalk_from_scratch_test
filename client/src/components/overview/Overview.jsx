@@ -20,72 +20,24 @@ class Overview extends React.Component {
       styleIndex: 0,
       styleName: ''
     };
-    this.updateOverviewState = this.updateOverviewState.bind(this);
+    //this.updateOverviewState = this.updateOverviewState.bind(this);
   }
 
-  updateOverviewState(newStateImport) {
-    // console.log('this was clicked')
-    // console.log(newState);
-    this.setState(newStateImport);
-    let photoData = this.state.currentStyles[this.state.styleIndex].photos;
-    let currentPhotosArray = [];
-    let currentThumbsArray = [];
-    for (let i = 0; i < photoData.length; i++) {
-      currentPhotosArray.push(photoData[i].url);
-      currentThumbsArray.push(photoData[i].thumbnail_url);
-    }
-    this.setState({
-      currentPhotos: currentPhotosArray,
-      currentThumbs: currentThumbsArray,
-      styleName: this.state.currentStyles[this.state.styleIndex].name
-    })
+  // updateOverviewState(newStateImport) {
 
-  }
+  // }
 
-  componentDidMount() {
-    this.setState({ currentProduct: this.props.currentProduct });
-    let options = {
-      type: 'GET',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.currentProduct.id}/styles`,
-      headers: {
-        'Authorization': TOKEN
-      }
-    };
-    axios(options)
-      .catch((err) => {
-        console.error(err);
-      })
-      .then((results) => {
-        let photoData = results.data.results[this.state.styleIndex].photos;
-        let currentPhotosArray = [];
-        let currentThumbsArray = [];
-        for (let i = 0; i < photoData.length; i++) {
-          currentPhotosArray.push(photoData[i].url);
-          currentThumbsArray.push(photoData[i].thumbnail_url);
-        }
-        this.setState({
-          currentStyles: results.data.results,
-          currentPhotos: currentPhotosArray,
-          currentProduct: this.props.currentProduct,
-          currentCategory: this.props.currentCategory.toUpperCase(),
-          currentThumbs: currentThumbsArray,
-          styleName: results.data.results[this.state.styleIndex].name
-        })
-        console.log('results', results.data.results);
-        // console.log(this.state.currentStyles);
-        // console.log(this.state.currentThumbs);
-        // console.log(this.state.currentPhotos);
-        // console.log(this.state.currentProduct);
-      });
-  }
+  // componentDidMount() {
+
+  // }
 
   // componentDidUpdate(prevProps) {
   //   prevProps !== this.props ? this.initializeOverview() : null
   // }
 
-  initializeOverview() {
+  // initializeOverview() {
 
-  }
+  // }
 
   render() {
     return (
@@ -93,10 +45,13 @@ class Overview extends React.Component {
       <div className="grid-container">
         <div className="grid-child-1">
           <MainImageCarousel
+            handleUpdateMainAppState={this.props.handleUpdateMainAppState}
+            currentProduct={this.props.currentProduct}
             currentPhotos={this.props.currentPhotos}
             currentStyles={this.props.currentStyles}
             currentThumbs={this.props.currentThumbs}
             photoIndex={this.props.photoIndex}
+            mainImage={this.props.mainImage}
             styleIndex={this.props.styleIndex} />
         </div>
         <div className="grid-child-2">
@@ -116,7 +71,13 @@ class Overview extends React.Component {
             currentProduct={this.props.currentProduct}
             currentStyles={this.props.currentStyles}
             styleName={this.props.styleName}
-            styleIndex={this.props.styleIndex} />
+            styleIndex={this.props.styleIndex}
+            currentSizesAvailable={this.props.currentSizesAvailable}
+            currentQuantitiesAvailable={this.props.currentQuantitiesAvailable}
+            currentSKU={this.props.currentSKU}
+            currentStyleID={this.props.currentStyleID}
+            selectedSize={this.props.selectedSize}
+            selectedQuantity={this.props.selectedQuantity} />
         </div>
       </div>
     )
