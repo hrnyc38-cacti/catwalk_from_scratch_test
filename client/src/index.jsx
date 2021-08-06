@@ -36,6 +36,7 @@ class App extends React.Component {
     }
     this.cardOnClick = this.cardOnClick.bind();
     this.handleUpdateMainAppState = this.handleUpdateMainAppState.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   handleUpdateMainAppState(newState) {
@@ -60,9 +61,10 @@ class App extends React.Component {
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
-      //this.getProductByID(this.state.currentProductID);
-      console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
-      console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
+      this.componentDidMount();
+      // //this.getProductByID(this.state.currentProductID);
+      // console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
+      // console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
     }
   }
 
