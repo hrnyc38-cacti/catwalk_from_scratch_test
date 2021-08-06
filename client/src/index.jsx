@@ -38,18 +38,15 @@ class App extends React.Component {
     this.handleUpdateMainAppState = this.handleUpdateMainAppState.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
-
   handleUpdateMainAppState(newState) {
     console.log('I made it back up', newState);
     console.log(this.state.currentSKU);
     this.setState(newState);
     console.log(this.state.currentSKU);
   }
-
   componentDidMount() {
     this.getProductByID(this.state.currentProductID);
   }
-
   cardOnClick = (e) => {
     console.log('The sent item: ', e);
     let newID = e;
@@ -57,27 +54,15 @@ class App extends React.Component {
     this.setState({ currentProductID: newID });
     console.log('The state after updating: ', this.state.currentProductID)
   }
-
   componentDidUpdate(previousProps, previousState, snapShot) {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
-<<<<<<< HEAD
-      this.getProductByID(this.state.currentProductID);
-      console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
-      console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
-=======
       this.componentDidMount();
-      // //this.getProductByID(this.state.currentProductID);
-      // console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
-      // console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
->>>>>>> 30bc4bd6f9c00c9fb0c97948f2391992f9b69f85
     }
   }
-
   cardOnClick = (e) => {
     this.setState({ currentProductID: e });
   }
-
   getProductByID(ID) {
     let options = {
       type: 'GET',
@@ -149,7 +134,6 @@ class App extends React.Component {
             })
             console.log('[[[[[[[[[This is state}}}}}}}', this.state)
           });
-
       })
       .catch((err) => {
         console.err('failed to load data from server', err);
@@ -160,46 +144,36 @@ class App extends React.Component {
     this.setState({ ratings: rating });
     console.log('RATINGS IN MAIN PAGE ', this.state.ratings);
   }
-
-
   render() {
     if (this.state.finishedLoading) {
       return (
         <div>
-          <div>
-            <Overview
-              currentProduct={this.state.currentProduct}
-              currentProductID={this.state.currentProductID}
-              currentCategory={this.state.currentProduct.category}
-              addToBag={this.state.addToBag}
-              currentPhotos={this.state.currentPhotos}
-              currentStyles={this.state.currentStyles}
-              currentThumbs={this.state.currentThumbs}
-              currentFavorites={this.state.currentFavorites}
-              photoIndex={this.state.photoIndex}
-              styleIndex={this.state.styleIndex}
-              styleName={this.state.styleName}
-              mainImage={this.state.mainImage}
-              handleUpdateMainAppState={this.handleUpdateMainAppState}
-              currentSizesAvailable={this.state.currentSizesAvailable}
-              currentQuantitiesAvailable={this.state.currentQuantitiesAvailable}
-              currentItemInFavorites={this.state.currentItemInFavorites}
-              currentSKU={this.state.currentSKU}
-              currentStyleID={this.state.currentStyleID}
-              selectedSize={this.state.selectedSize}
-              selectedQuantity={this.state.selectedQuantity}
-              ratings={this.state.ratings} />
-          </div>
+          <Overview
+            currentProduct={this.state.currentProduct}
+            currentProductID={this.state.currentProductID}
+            currentCategory={this.state.currentProduct.category}
+            addToBag={this.state.addToBag}
+            currentPhotos={this.state.currentPhotos}
+            currentStyles={this.state.currentStyles}
+            currentThumbs={this.state.currentThumbs}
+            currentFavorites={this.state.currentFavorites}
+            photoIndex={this.state.photoIndex}
+            styleIndex={this.state.styleIndex}
+            styleName={this.state.styleName}
+            mainImage={this.state.mainImage}
+            handleUpdateMainAppState={this.handleUpdateMainAppState}
+            currentSizesAvailable={this.state.currentSizesAvailable}
+            currentQuantitiesAvailable={this.state.currentQuantitiesAvailable}
+            currentItemInFavorites={this.state.currentItemInFavorites}
+            currentSKU={this.state.currentSKU}
+            currentStyleID={this.state.currentStyleID}
+            selectedSize={this.state.selectedSize}
+            selectedQuantity={this.state.selectedQuantity}
+            ratings={this.state.ratings} />
           <h3 className="slogan" >"{this.state.currentProduct.slogan}"</h3>
-          <div>
-            <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
-          </div>
-          <div>
-            <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
-          </div>
-          <div>
-            <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} />
-          </div>
+          <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
+          <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
+          <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} />
         </div>
       );
     } else {
