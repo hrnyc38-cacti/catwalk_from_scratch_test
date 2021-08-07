@@ -13,24 +13,37 @@ class YourOutfitCarousel extends React.Component {
     };
     this.addOutfit = this.addOutfit.bind(this);
     this.removingOutfit = this.removingOutfit.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+  componentDidMount() {
+    if (localStorage.getItem('outFits') !== null) {
+      var localOutfits = localStorage.getItem('outFits');
+      localOutfits = localOutfits.split(',');
+      for (var x = 0; x < localOutfits.length; x++) {
+        localOutfits[x] = parseInt(localOutfits[x]);
+      }
+      this.setState({ outFits: localOutfits });
+    }
   }
   addOutfit() {
     var currentOutfit = this.state.outFits.slice();
-    currentOutfit.push(this.props.productId);
+    currentOutfit.push(parseInt(this.props.productId));
     this.setState({ outFits: currentOutfit });
+    localStorage.setItem('outFits', currentOutfit);
   }
   removingOutfit(e) {
-    for (var x = 0; x <= this.state.outFits.length; x++) {
-      if (e === this.state.outFits[x]) {
-        if (this.state.outFits.length === 1) {
-          this.setState({ outFits: [] });
-        } else {
-          var newOutfitList = this.state.outFits.splice(x, 1);
-          this.setState({ outFits: newOutfitList });
-        }
+    var newOutfit = [];
+    for (var x = 0; x < this.state.outFits.length; x++) {
+      if (e !== this.state.outFits[x]) {
+        newOutfit.push(this.state.outFits[x]);
       }
     }
-
+    if (newOutfit.length === 0) {
+      localStorage.removeItem('outFits');
+    } else {
+      localStorage.setItem('outFits', newOutfit);
+    }
+    this.setState({ outFits: newOutfit });
   }
   render() {
     var breakPoints = [
@@ -45,7 +58,7 @@ class YourOutfitCarousel extends React.Component {
         <Carousel breakPoints={breakPoints}>
           <YourOutfitCard handleClick={this.addOutfit} />
           {this.state.outFits.map((product) => {
-            return <YourOutfitCard productID={product} removingOutfit={this.removingOutfit} />
+            return <YourOutfitCard key={product} productID={product} removingOutfit={this.removingOutfit} />
           })}
         </Carousel>
       </div>
