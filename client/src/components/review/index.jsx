@@ -19,7 +19,6 @@ class Review extends React.Component {
       { headers: { Authorization: TOKEN } })
       .then((results) => {
         this.setState({ reviews: results.data });
-        //console.log('THIS IS reviews', this.state.reviews);
       })
       .then(() =>
         axios.get(
@@ -29,7 +28,6 @@ class Review extends React.Component {
       )
       .then((result) => {
         this.setState({ meta: result.data });
-        //console.log('THIS IS meta', this.state.meta);
       })
       .then(() => {
         this.props.passRatings(this.state.meta.ratings);
@@ -39,9 +37,7 @@ class Review extends React.Component {
       })
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('Previous props ', prevProps);
     if (prevProps.productId !== this.props.productId) {
-      console.log('id props has changed.');
       this.componentDidMount();
     }
   }
@@ -53,12 +49,11 @@ class Review extends React.Component {
         <div>Loading...</div>
       )
     } else {
-      //console.log('meta ', this.state.meta);
       return (
         <div>
           <h5 id="reviews" className="section-head">RATINGS & REVIEWS</h5>
           <RateSum meta={this.state.meta} />
-          <br/>
+          <br />
         </div>
       )
     }

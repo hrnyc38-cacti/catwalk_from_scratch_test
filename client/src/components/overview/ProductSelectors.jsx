@@ -1,5 +1,8 @@
+
 import React from 'react';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+
+
 
 class ProductSelectors extends React.Component {
   constructor(props) {
@@ -37,7 +40,6 @@ class ProductSelectors extends React.Component {
       selectedSize: e.target.value
     };
     this.props.handleUpdateMainAppState(newState);
-    console.log(this.props.currentSKU);
   }
 
   handleToggleAddToFavoritesClick(e) {
@@ -85,7 +87,6 @@ class ProductSelectors extends React.Component {
   }
 
   handleAddToBagClick(e) {
-    //this.props.handleUpdateMainAppState({ currentProductID: '11007' })
     let oldBag = this.props.addToBag;
     let itemToBeAddedToBag = {
       name: this.props.currentProduct.name,
@@ -137,8 +138,8 @@ class ProductSelectors extends React.Component {
       <div className="product-selectors">
         <div className="size-and-quantity-div">
           <div className="div-size-select">
-            <select className="size-selector" onChange={(e) => { this.handleSelectSize(e) }}>
-              <option selected disabled>SELECT SIZE</option>
+            <select className="size-selector" defaultValue="default" onChange={(e) => { this.handleSelectSize(e) }}>
+              <option value="default">SELECT SIZE</option>
               {this.props.currentSizesAvailable.map((size) => {
                 return (
                   <option key={size}>{size}</option>
@@ -147,11 +148,11 @@ class ProductSelectors extends React.Component {
             </select>
           </div>
           <div className="div-quantity">
-            <select className="quantity-selector" onChange={(e) => { this.handleSelectQuantity(e) }}>
-              <option selected>1</option>
+            <select className="quantity-selector" onChange={(e) => { this.handleSelectQuantity(e) }} defaultValue="default2">
+              <option value="default2">1</option>
               {this.props.currentQuantitiesAvailable.map((qty) => {
                 return (
-                  <option>{qty}</option>
+                  <option key={qty}>{qty}</option>
                 )
               })}
             </select>
@@ -161,8 +162,10 @@ class ProductSelectors extends React.Component {
           <div className="div-add">
             <button className="add-to-bag-button" onClick={(e) => { this.handleAddToBagClick(e) }}>ADD TO BAG +</button>
           </div>
-          <div className="div-star">
-            {this.checkFavoritesForWhichToRender()}
+          <div className="div-star-outer">
+            <div className="div-star-inner">
+              {this.checkFavoritesForWhichToRender()}
+            </div>
           </div>
 
         </div>
