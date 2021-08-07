@@ -9,7 +9,6 @@ class StyleSelection extends React.Component {
   }
 
   componentDidMount() {
-    //console.log('here we go again', this.props.currentStyles);
 
   }
 
@@ -17,7 +16,6 @@ class StyleSelection extends React.Component {
     let reset = function (element) {
       let selectedButton = document.getElementsByClassName(element);
       selectedButton[0].selectedIndex = 0;
-      console.log(selectedButton);
     }
     reset('size-selector');
     reset('quantity-selector');

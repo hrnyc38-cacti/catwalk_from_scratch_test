@@ -18,7 +18,6 @@ function ProductInfo({ ratings, category, name, price, description }) {
       divider += count[i];
     }
     let averageStar = (sum / divider).toFixed(1);
-    //console.log('NOW in getstars');
     let deciPart = averageStar - Math.floor(averageStar);
     averageStar = Math.floor(averageStar);
     let outlineCount = 5 - averageStar;
@@ -33,7 +32,6 @@ function ProductInfo({ ratings, category, name, price, description }) {
     let filledStars = [...Array(averageStar)].map(() => {
       return <BsStarFill key={j++} />
     })
-    //let n = 5 - j
     let outlineStars = [...Array(outlineCount)].map(() => {
       return <BsStar key={j++} />
     })
@@ -45,7 +43,6 @@ function ProductInfo({ ratings, category, name, price, description }) {
   } else {
     return (
       <div className="product-info">
-        {/* <h5>insert stars and a link to reviews here</h5> */}
         <span className="stars-on-product-info">{getStars(ratings)}</span>
         <span>
           <a id="read-all-reviews" href="#reviews">Read All Reviews</a>
@@ -57,8 +54,6 @@ function ProductInfo({ ratings, category, name, price, description }) {
       </div>
     )
   }
-
-
 };
 
 export default ProductInfo;
