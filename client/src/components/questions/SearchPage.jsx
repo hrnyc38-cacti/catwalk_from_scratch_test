@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Search4answer from './Search4answer.jsx';
 import QandAList from './QandAList.jsx';
 
-function SearchPage ({questions, productId, productName}) {
-  console.log('new Qs in search page ', questions);
+function SearchPage({ questions, productId, productName }) {
   const [input, setInput] = useState('');
   const [qList, setqList] = useState([]);
 
@@ -26,7 +25,7 @@ function SearchPage ({questions, productId, productName}) {
 
   return (
     <div>
-      <Search4answer updateInput={updateInput}/>
+      <Search4answer updateInput={updateInput} />
       <QandAList questions={qList} productId={productId} productName={productName} />
       {/* <ul>
         {qList.map((item, i) => {

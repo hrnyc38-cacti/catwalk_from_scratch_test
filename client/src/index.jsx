@@ -40,9 +40,7 @@ class App extends React.Component {
   }
   handleUpdateMainAppState(newState) {
     console.log('I made it back up', newState);
-    console.log(this.state.currentSKU);
     this.setState(newState);
-    console.log(this.state.currentSKU);
   }
   componentDidMount() {
     this.getProductByID(this.state.currentProductID);
@@ -54,9 +52,6 @@ class App extends React.Component {
     if (previousState.currentProductID !== this.state.currentProductID) {
       this.setState({ currentProductID: this.state.currentProductID });
       this.componentDidMount();
-      // //this.getProductByID(this.state.currentProductID);
-      // console.log('((((((((THIS IS BAG)))))))))))', this.state.addToBag);
-      // console.log('ComponentDidUpdate on main page ', this.state.currentProductID);
     }
   }
 
@@ -107,7 +102,6 @@ class App extends React.Component {
             }
 
             for (let i = 0; i < this.state.currentFavorites.length; i++) {
-              console.log('THIS IS SKU!!!!!!!!!!!!!', sku);
               if (sku === currentFavorites[i].sku) {
                 isFavorite = true;
                 break;
@@ -129,7 +123,6 @@ class App extends React.Component {
               currentSKU: sku,
               finishedLoading: true
             })
-            console.log('[[[[[[[[[This is state}}}}}}}', this.state)
           });
       })
       .catch((err) => {
@@ -139,7 +132,6 @@ class App extends React.Component {
 
   passRatings(rating) {
     this.setState({ ratings: rating });
-    console.log('RATINGS IN MAIN PAGE ', this.state.ratings);
   }
   render() {
     if (this.state.finishedLoading) {
