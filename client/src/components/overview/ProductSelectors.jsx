@@ -37,7 +37,6 @@ class ProductSelectors extends React.Component {
       selectedSize: e.target.value
     };
     this.props.handleUpdateMainAppState(newState);
-    console.log(this.props.currentSKU);
   }
 
   handleToggleAddToFavoritesClick(e) {
@@ -85,7 +84,6 @@ class ProductSelectors extends React.Component {
   }
 
   handleAddToBagClick(e) {
-    //this.props.handleUpdateMainAppState({ currentProductID: '11007' })
     let oldBag = this.props.addToBag;
     let itemToBeAddedToBag = {
       name: this.props.currentProduct.name,
@@ -161,8 +159,10 @@ class ProductSelectors extends React.Component {
           <div className="div-add">
             <button className="add-to-bag-button" onClick={(e) => { this.handleAddToBagClick(e) }}>ADD TO BAG +</button>
           </div>
-          <div className="div-star">
-            {this.checkFavoritesForWhichToRender()}
+          <div className="div-star-outer">
+            <div className="div-star-inner">
+              {this.checkFavoritesForWhichToRender()}
+            </div>
           </div>
 
         </div>

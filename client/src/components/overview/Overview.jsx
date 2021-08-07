@@ -10,22 +10,9 @@ class Overview extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentProduct: {},
-      currentPhotos: [],
-      currentStyles: [],
-      currentThumbs: [],
-      currentFavorites: [],
-      currentCategory: '',
-      photoIndex: 0,
-      styleIndex: 0,
-      styleName: ''
+
     };
-    //this.updateOverviewState = this.updateOverviewState.bind(this);
   }
-
-  // updateOverviewState(newStateImport) {
-
-  // }
 
   // componentDidMount() {
 
@@ -35,9 +22,6 @@ class Overview extends React.Component {
   //   prevProps !== this.props ? this.initializeOverview() : null
   // }
 
-  // initializeOverview() {
-
-  // }
 
   render() {
     return (

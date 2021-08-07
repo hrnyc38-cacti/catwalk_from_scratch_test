@@ -18,11 +18,9 @@ class MainImageCarousel extends React.Component {
   }
 
   componentDidUpdate() {
-    //console.log(this.props);
   }
 
   handleThumbnailClick(index) {
-    console.log('this workED', index);
     let newState = {
       photoIndex: index,
       mainImage: this.props.currentPhotos[index]
@@ -95,9 +93,3 @@ class MainImageCarousel extends React.Component {
 }
 
 export default MainImageCarousel;
-
-// {this.props.currentPhotos.map((photo) => {
-//   return (
-//     <img src={photo} />
-//   )
-// })}
