@@ -256,50 +256,60 @@ body {
 .size-and-quantity-div {
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .add-and-star-div {
   /* margin-right: 25px; */
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
 }
 
 .div-size-select {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
 }
 
 .div-quantity {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  float: right;
+  /* display: flex; */
+  align-items: right;
+  justify-content: right;
 }
 
 .div-add {
   /* height: 100%;
   width: 100%; */
+  /* float: center; */
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
 }
 
 .div-star-inner {
   height: 40px;
-  width: 60px;
+  width: 100%;
   /* margin-top: 10px; */
+  /* margin: 4px, 4px; */
+  margin-top: 2.5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
   border: 2px solid #696969;
-  float: center;
+  /* float: center; */
   display: flex;
+  float: right;
   align-items: center;
   justify-content: center;
+  /* width: 45px; */
   /* margin-right: 35px; */
 }
 
 .div-star-outer {
-
-  display: flex;
+  /* float: center; */
+  /* display: flex; */
+  float: right;
   align-items: center;
   justify-content: center;
 
@@ -309,12 +319,20 @@ body {
   background: transparent;
   border: 2px solid #696969;
   text-decoration: bold;
-  padding: 12px 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
   text-align: left;
-  float: center;
+  /* float: left; */
+  width: 100%;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 2.5px;
+
   /* display: inline-block; */
   font-size: 14px;
-  margin: 4px 4px;
+  /* margin: 4px 2px; */
 
   /* size: 200px; */
 }
@@ -323,24 +341,38 @@ body {
   background: transparent;
   border: 2px solid #696969;
   text-decoration: bold;
-  padding: 12px 30px;
-  text-align: left;
-  float: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  /* text-align: left; */
+  width: 100%;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 2.5px;
+  float: right;
   /* display: inline-block; */
   font-size: 14px;
-  margin: 4px 2px;
+  /* margin: 4px 2px; */
 }
 
 .add-to-bag-button {
   background: transparent;
   border: 2px solid #696969;
   text-decoration: bold;
-  padding: 12px 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
   text-align: left;
+  margin-top: 2.5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
   float: center;
+  width: 100%;
   /* display: inline-block; */
   font-size: 14px;
-  margin: 4px 2px;
+  /* margin: 4px 2px; */
 }
 
 .favs-star-unchecked {
@@ -352,7 +384,7 @@ body {
   /* border: 2px solid #696969; */
   text-decoration: bold;
   /* padding: 12px 30px; */
-  text-align: left;
+  /* text-align: left; */
   float: center;
   /* display: inline-block; */
   font-size: 14px;
