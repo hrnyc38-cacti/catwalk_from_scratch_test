@@ -148,3 +148,34 @@
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
+
+/* .star-rating {
+  color:lightgray;
+  font-size: 15px;
+  height: 15px;
+  width: 75px;
+  margin: 0px ;
+  position: relative;
+  padding: 0;
+  text-shadow: lightgray;
+  text-align: left;
+  align-items: left;
+  padding-left: 0px;
+  &-top {
+    color: black;
+    padding: 0;
+    align-self:left;
+    position: absolute;
+    z-index: 1;
+
+    overflow: hidden;
+    align-items: left;
+  }
+  &-bottom {
+    padding: 0;
+
+    z-index: 0;
+    align-self:left;
+    align-items: left;
+  }
+} */

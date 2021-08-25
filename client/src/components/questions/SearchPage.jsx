@@ -11,9 +11,10 @@ function SearchPage({ questions, productId, productName }) {
       setqList(questions);
     } else {
       var filtered = questions.filter((question) => {
+        //console.log('IN SEARCH BAR ', question.question_body.toLowerCase().includes(input.toLowerCase()));
         return question.question_body.toLowerCase().includes(input.toLowerCase())
       })
-      //console.log('THIS IS FILTERED ', filtered);
+      console.log('THIS IS FILTERED ', filtered);
       setInput(input);
       setqList(filtered);
     }

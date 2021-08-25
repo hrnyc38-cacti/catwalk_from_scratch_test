@@ -1,6 +1,6 @@
 import React from "react";
 import BarChart from './Barchart.jsx';
-import StarSum from './StarSum.jsx';
+import StarSum from './Stars.jsx';
 import CharBars from './CharBars.jsx';
 
 function RateSum({ meta }) {
