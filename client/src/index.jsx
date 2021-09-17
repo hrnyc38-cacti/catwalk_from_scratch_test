@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import Questions from './components/questions/index.jsx';
-import Carousels from './components/carousels/Carousels.jsx';
+import RelatedCarousel from './components/relatedAndOutfit/RelatedCarousel.jsx';
+import YourOutfitCarousel from'./components/relatedAndOutfit/YourOutfitCarousel.jsx';
 import Review from './components/review/index.jsx';
 import Overview from './components/overview/Overview.jsx';
 import _ from 'underscore';
@@ -160,7 +161,9 @@ class App extends React.Component {
             selectedQuantity={this.state.selectedQuantity}
             ratings={this.state.ratings} />
           <h3 className="slogan" >"{this.state.currentProduct.slogan}"</h3>
-          <Carousels productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
+          <RelatedCarousel productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
+          <YourOutfitCarousel productId={this.state.currentProduct.id} />
+
           <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
           <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} />
         </div>

@@ -78,6 +78,7 @@ class RelatedProductCard extends React.Component {
     this.setState({show: false});
   }
   render() {
+    console.log(this.state.cardData.url);
     return (
       <div>
         <Modal show={this.state.show} closeModule={this.closeModule}/>
