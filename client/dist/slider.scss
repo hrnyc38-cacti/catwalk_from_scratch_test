@@ -1,23 +1,31 @@
 .slider {
+  position: relative;
   border: 1px solid red;
   width: 100%;
   height: 100vh;
+}
+.slideWrapper {
+  position: relative;
+  width: 80%;
+  height: 100vh;
   box-sizing: border-box;
-  margin: 0;
+  margin: auto;
   padding: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
 }
 .slide {
   position: relative;
   border: 1px solid blue;
-  min-width: 100%;
+  min-width: 25%;
   height: 80%;
   transition: 0.5s;
 }
 %btn-styles{
   position: absolute;
-  top: 61.75%;
+  top: 50%;
   transform: translateY(-50%);
   width: 10%;
   height: 80%;

@@ -13,17 +13,19 @@ function Slider(props) {
   props.relatedProducts
   return (
     <div className='slider'>
-      {props.relatedProducts.map((item, index) => {
-        return (
-          <div key={index}
-            className='slide'
-            style={{ transform: `translateX(${x}%)` }}>
+      <div className='slideWrapper'>
+        {props.relatedProducts.map((item, index) => {
+          return (
+            <div key={index}
+              className='slide'
+              style={{ transform: `translateX(${x}%)` }}>
 
-            <RelatedProductCard key={item} productID={item} cardOnClick={props.cardClick} />
+              <RelatedProductCard key={item} productID={item} cardOnClick={props.cardClick} />
 
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
       <button id="goLeft" onClick={goLeft}>left</button>
       <button id="goRight" onClick={goRight}>right</button>
     </div>
