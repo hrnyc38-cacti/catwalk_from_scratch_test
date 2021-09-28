@@ -19,7 +19,7 @@ class YourOutfitCard extends React.Component {
     if (this.state.productId) {
     let options = {
       type: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productID}`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${this.props.productID}`,
       headers: {
         Authorization: TOKEN
       },
@@ -36,11 +36,11 @@ class YourOutfitCard extends React.Component {
           price: res.data.default_price
         };
 
-        options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productID}/styles`;
+        options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${this.props.productID}/styles`;
         axios(options)
           .then((res) => {
             buildItem.url = res.data.results[0].photos[0].url;
-            options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/reviews/`;
+            options.url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/`;
 
             axios(options)
               .then((res) => {

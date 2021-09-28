@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import RelatedProductCard from './RelatedProductCard.jsx';
-import Carousel from 'react-elastic-carousel';
+// import Carousel from 'react-elastic-carousel';
+import Slider from './Slider.js'
 import { TOKEN } from './../../config.js';
 
 class RelatedCarousel extends React.Component {
@@ -23,7 +24,7 @@ class RelatedCarousel extends React.Component {
   getRelatedProducts() {
     let options = {
       type: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${this.props.productId}/related`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${this.props.productId}/related`,
       headers: {
         Authorization: TOKEN
       }
@@ -42,22 +43,10 @@ class RelatedCarousel extends React.Component {
     }
   }
   render() {
-    var breakPoints = [
-      { width: 1, itemsToShow: 1 },
-      { width: 500, itemsToShow: 2 },
-      { width: 768, itemsToShow: 3 },
-      { width: 1200, itemsToShow: 4 }
-    ];
     return (
       <div>
         <h5 className="section-head">RELATED PRODUCTS</h5>
-        <Carousel breakPoints={breakPoints} >
-          {this.state.relatedDataID.map(product => {
-            return (
-              <RelatedProductCard key={product} productID={product} cardOnClick={this.props.cardOnClick} />
-            );
-          })}
-        </Carousel >
+        <Slider relatedProducts={this.state.relatedDataID} cardClick={this.props.cardOnClick} />
       </div>
     );
   }

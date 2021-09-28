@@ -14,7 +14,7 @@ class Answer extends React.Component {
   handleHelpful(e) {
     if (!this.state.isHelpful) {
       //invoke func (this.props.answer.helpfulness +1) in index.js
-      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/answers/${this.props.answer.id}/helpful`, null,
+      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/answers/${this.props.answer.id}/helpful`, null,
       {headers: {Authorization: TOKEN}})
         .then(() => {
           this.setState({
@@ -29,7 +29,7 @@ class Answer extends React.Component {
   };
   handleReport(e) {
     if (this.state.isReport === 'Report') {
-      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/answers/${this.props.answer.id}/report`, null,
+      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/answers/${this.props.answer.id}/report`, null,
       {headers: {Authorization: TOKEN}})
         .then(()=> {
           this.setState({

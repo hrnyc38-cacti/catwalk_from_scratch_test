@@ -55,12 +55,12 @@ class Overview extends React.Component {
             styleIndex={this.props.styleIndex} />
         </div>
         <div className="grid-child-2">
-          <ProductInfo
+          {/* <ProductInfo
             description={this.props.currentProduct.description}
             name={this.props.currentProduct.name}
             category={this.props.currentCategory}
             price={this.props.currentProduct.default_price}
-            ratings={this.props.ratings} />
+            ratings={this.props.ratings} /> */}
           <StyleSelection
             currentStyles={this.props.currentStyles}
             currentThumbs={this.props.currentThumbs}

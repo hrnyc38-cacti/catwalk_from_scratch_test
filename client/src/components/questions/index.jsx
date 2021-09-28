@@ -14,7 +14,7 @@ class Questions extends React.Component {
 
   componentDidMount() {
     axios.get(
-      `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions/?product_id=${this.props.productId}`,
+      `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions/?product_id=${this.props.productId}`,
       { headers: { Authorization: TOKEN } })
       .then((results) => {
         this.setState({ questions: results.data })

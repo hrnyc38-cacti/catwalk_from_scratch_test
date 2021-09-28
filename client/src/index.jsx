@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductID: '11004',
+      currentProductID: '39333',
       currentProduct: {},
       addToBag: [],
       finishedLoading: false,
@@ -59,7 +59,7 @@ class App extends React.Component {
   getProductByID(ID) {
     let options = {
       type: 'GET',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${ID}`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${ID}`,
       headers: {
         'Authorization': TOKEN
       }
@@ -68,7 +68,7 @@ class App extends React.Component {
       .then((res) => {
         let options2 = {
           type: 'GET',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/${ID}/styles`,
+          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${ID}/styles`,
           headers: {
             'Authorization': TOKEN
           }
@@ -138,7 +138,7 @@ class App extends React.Component {
     if (this.state.finishedLoading) {
       return (
         <div>
-          <Overview
+          {/* <Overview
             currentProduct={this.state.currentProduct}
             currentProductID={this.state.currentProductID}
             currentCategory={this.state.currentProduct.category}
@@ -159,13 +159,13 @@ class App extends React.Component {
             currentStyleID={this.state.currentStyleID}
             selectedSize={this.state.selectedSize}
             selectedQuantity={this.state.selectedQuantity}
-            ratings={this.state.ratings} />
-          <h3 className="slogan" >"{this.state.currentProduct.slogan}"</h3>
+            ratings={this.state.ratings} /> */}
+          {/* <h3 className="slogan" >"{this.state.currentProduct.slogan}"</h3> */}
           <RelatedCarousel productId={this.state.currentProduct.id} cardOnClick={this.cardOnClick} />
           <YourOutfitCarousel productId={this.state.currentProduct.id} />
 
-          <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
-          <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} />
+          {/* <Questions productId={this.state.currentProduct.id} productName={this.state.currentProduct.name} />
+          <Review productId={this.state.currentProduct.id} passRatings={this.passRatings.bind(this)} /> */}
         </div>
       );
     } else {

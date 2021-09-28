@@ -17,7 +17,7 @@ class QnA extends React.Component {
   handleHelpful(e) {
     if (!this.state.isHelpful) {
 
-      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/qa/questions/${this.props.question.question_id}/helpful`, null,
+      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions/${this.props.question.question_id}/helpful`, null,
       {headers: {Authorization: TOKEN}})
         .then(
           this.setState({

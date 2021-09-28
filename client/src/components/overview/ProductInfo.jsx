@@ -8,8 +8,10 @@ function ProductInfo({ ratings, category, name, price, description }) {
     let star = [];
     let count = [];
     for (var k in ratings) {
+
       star.push(parseInt(k));
-      count.push(parseInt(ratings[k]))
+      count.push(parseInt(ratings[k]));
+      console.log(typeof count);
     }
     let sum = 0;
     let divider = 0;
