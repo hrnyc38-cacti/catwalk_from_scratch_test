@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './../../../dist/slider.scss';
-import RelatedProductCard from './RelatedProductCard.jsx'
+import RelatedProductCard from './RelatedProductCard.jsx';
+import { FaChevronLeft, FaChevronRight} from "react-icons/fa";
 
 function Slider(props) {
   const [x, setX] = useState(0);
@@ -26,8 +27,8 @@ function Slider(props) {
           );
         })}
       </div>
-      <button id="goLeft" onClick={goLeft}>left</button>
-      <button id="goRight" onClick={goRight}>right</button>
+      <FaChevronRight id="goRight" onClick={goLeft}/>
+      <FaChevronLeft  id="goLeft" onClick={goRight}/>
     </div>
   );
 };
